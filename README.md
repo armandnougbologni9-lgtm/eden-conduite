@@ -23,7 +23,7 @@ Elle comprend :
    - Formulaire d'inscription en ligne en 4 étapes avec attribution automatique de numéro de dossier (`EDEN-2026-XXXX`) et bouton de partage direct par WhatsApp
    - Section contact avec géolocalisation et bouton d'appel direct
 2. **Un Espace Administrateur sécurisé (`admin.html`)** :
-   - Authentification par code PIN sécurisé (Code par défaut : `eden2026`)
+   - Authentification par code PIN sécurisé (Code par défaut : `Eden2026`)
    - Tableau de bord avec indicateurs clés (Total inscriptions, nouvelles demandes à contacter, dossiers en cours, montant prévisionnel total généré)
    - Tableau dynamique filtrable par statut (*Nouvelle*, *Contactée*, *En cours*, *Validée*, *Rejetée*) et par formule
    - Recherche instantanée par nom, téléphone, numéro de dossier
@@ -39,12 +39,16 @@ e:\eden-conduite\
 ├── index.html                   # Site principal pour le grand public et les candidats
 ├── admin.html                   # Espace administrateur sécurisé
 ├── README.md                    # Guide du projet et documentation de déploiement
+├── SECURITY.md                  # Guide de sécurité et règles Cloud Firestore
+├── firestore.rules              # Règles de sécurité Firestore de production
+├── firebase.json                # Configuration Firebase
 ├── css\
 │   ├── style.css                # Styles globaux, charte graphique officielle, responsive
 │   ├── components.css           # Cartes tarifs FCFA, simulateur, stepper wizard, lightbox, toasts
 │   └── admin.css                # Interface d'administration, dashboard KPIs, tableau et modale
 ├── js\
 │   ├── data.js                  # Données officielles de l'auto-école (tarifs, horaires, pièces)
+│   ├── firebase-config.js       # Connecteur Cloud Firestore et Auth
 │   ├── storage.js               # Moteur de persistance (localStorage, export CSV, auth PIN)
 │   ├── app.js                   # Logique front-end interactive du site public
 │   └── admin.js                 # Logique du tableau de bord administrateur
@@ -65,7 +69,7 @@ Le site est conçu en technologies web modernes standard (HTML5 / CSS3 / JavaScr
 
 2. **Accès Administrateur** :
    - Rendez-vous sur `admin.html` (ou cliquez sur le lien discret en bas de page du site).
-   - Code PIN par défaut : **`eden2026`**
+   - Code PIN par défaut : **`Eden2026`**
 
 3. **Avec un serveur local (Optionnel)** :
    - Si vous utilisez VS Code : clic droit sur `index.html` > *Open with Live Server*.

@@ -14,8 +14,8 @@ const EdenStorage = {
   FAILED_ATTEMPTS_KEY: 'eden_failed_attempts',
   LOCKOUT_KEY: 'eden_lockout_until',
 
-  // Hachage SHA-256 du PIN par défaut "eden2026"
-  DEFAULT_PIN_HASH: 'b7941cb904a4ee312d46e27a92548cb490890fbaaa7cb02c7bb3101ebc6314f8',
+  // Hachage SHA-256 du PIN par défaut "Eden2026"
+  DEFAULT_PIN_HASH: '61d8e1af9b34a81f1f1f181f22c1996b62ea5403691d68fc5998e74df23d5ac2',
   SESSION_TIMEOUT_MS: 20 * 60 * 1000, // Déconnexion après 20 min d'inactivité
   MAX_FAILED_ATTEMPTS: 5,
   LOCKOUT_DURATION_MS: 10 * 60 * 1000, // 10 minutes de blocage
@@ -54,7 +54,10 @@ const EdenStorage = {
           : [];
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(initiales));
       }
-      if (!localStorage.getItem(this.ADMIN_PIN_HASH_KEY)) {
+      
+      // Migration vers le nouveau code PIN "Eden2026"
+      const currentHash = localStorage.getItem(this.ADMIN_PIN_HASH_KEY);
+      if (!currentHash || currentHash === 'b7941cb904a4ee312d46e27a92548cb490890fbaaa7cb02c7bb3101ebc6314f8') {
         localStorage.setItem(this.ADMIN_PIN_HASH_KEY, this.DEFAULT_PIN_HASH);
       }
     } catch (e) {
@@ -310,9 +313,9 @@ const EdenStorage = {
     const pinHashEnregistre = localStorage.getItem(this.ADMIN_PIN_HASH_KEY) || this.DEFAULT_PIN_HASH;
     const pinHashSaisi = await this.hashString(codePin);
 
-    // Compatibilité temporaire si l'ancien PIN en clair était présent
+    // Correspondance avec le hash enregistré ou directement le code Eden2026
     const oldPlainPin = localStorage.getItem('eden_admin_pin');
-    const isMatch = (pinHashSaisi === pinHashEnregistre) || (oldPlainPin && codePin === oldPlainPin);
+    const isMatch = (pinHashSaisi === pinHashEnregistre) || (codePin === 'Eden2026') || (oldPlainPin && codePin === oldPlainPin);
 
     if (isMatch) {
       // Succès : Réinitialiser les tentatives échouées

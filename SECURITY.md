@@ -13,7 +13,7 @@ Ce document détaille l'ensemble des mesures de sécurité mises en place sur le
 ### B. Hachage Cryptographique du Code PIN Administrateur (SHA-256)
 - Le mot de passe / code PIN administrateur n'est **jamais stocké en texte clair**.
 - L'authentification calcule l'empreinte cryptographique **SHA-256** via l'API native standard `crypto.subtle.digest`.
-- L'empreinte par défaut correspond à : `b7941cb904a4ee312d46e27a92548cb490890fbaaa7cb02c7bb3101ebc6314f8` (`eden2026`).
+- L'empreinte par défaut correspond à : `61d8e1af9b34a81f1f1f181f22c1996b62ea5403691d68fc5998e74df23d5ac2` (`Eden2026`).
 
 ### C. Protection Anti-Brute Force (Rate Limiting & Lockout)
 - Limitation stricte à **5 tentatives consécutives** de saisie du code PIN.
