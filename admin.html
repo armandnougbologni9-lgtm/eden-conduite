@@ -7,6 +7,10 @@
   
   <link rel="icon" type="image/jpeg" href="assets/images/logo-eden-conduite.jpg">
   
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/admin.css">
@@ -31,7 +35,7 @@
       </form>
 
       <div class="login-default-hint">
-        Code PIN de démonstration : <strong>eden2026</strong>
+        🔐 Accès protégé par hachage cryptographique SHA-256 et verrouillage automatique anti-brute force.
       </div>
       
       <div style="margin-top: 1.5rem;">
@@ -67,6 +71,11 @@
             <span>↗</span>
           </a>
         </nav>
+
+        <div id="cloud-sync-status" style="margin: 1rem 1.25rem 0.5rem 1.25rem; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.75rem; display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.06); color: #94A3B8;">
+          <span id="cloud-sync-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #F59E0B;"></span>
+          <span id="cloud-sync-text">Stockage Sécurisé Local</span>
+        </div>
       </div>
 
       <div class="sidebar-footer">
@@ -281,6 +290,7 @@
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/admin.js"></script>
 </body>

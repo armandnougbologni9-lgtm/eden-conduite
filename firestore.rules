@@ -1,0 +1,130 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: inscriptions
+// Document ID: pattern EDEN-YYYY-XXXX (e.g. EDEN-2026-1234)
+// Fields:
+//   - id: string (required, 10-25 chars) - Identifiant unique du dossier
+//   - date: string (required, ISO 8601 format) - Date de soumission
+//   - nom: string (required, 2-60 chars) - Nom de famille du candidat
+//   - prenom: string (required, 2-60 chars) - Prénom(s) du candidat
+//   - telephone: string (required, 8-20 chars) - Téléphone principal
+//   - whatsapp: string (optional, 0-20 chars) - Numéro WhatsApp
+//   - email: string (optional, 0-100 chars, email format if not empty) - Adresse email
+//   - quartier: string (optional, 0-100 chars) - Quartier de résidence
+//   - nationalite: string (required, in ['nationale', 'etranger']) - Statut nationalité
+//   - formuleId: string (required, 2-50 chars) - Identifiant de la formule choisie
+//   - formuleNom: string (required, 2-100 chars) - Libellé de la formule
+//   - montantTotal: number (required, > 0) - Montant total estimé en FCFA
+//   - preferenceCoaching: string (optional, 0-100 chars) - Créneau théorique souhaité
+//   - disponibilitePratique: string (optional, 0-100 chars) - Disponibilités pratiques
+//   - piecesPretes: list (optional, max 10 elements) - Pièces justificatives disponibles
+//   - statut: string (required, in ['nouvelle', 'contactee', 'en_cours', 'validee', 'rejetee'])
+//   - notes: string (optional, max 1000 chars) - Notes du candidat / administratives
+//   - historique: list (optional, max 50 elements) - Journal d'audit des actions
+//
+// Collection: admins
+// Document ID: Firebase Auth UID
+// Fields:
+//   - email: string (required) - Email de l'administrateur
+//   - role: string (required, 'admin')
+//   - createdAt: timestamp
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'edenconduite01@gmail.com' ||
+        request.auth.token.admin == true ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    function validString(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+             request.resource.data[field].size() >= minLen &&
+             request.resource.data[field].size() <= maxLen;
+    }
+
+    function validOptionalString(field, maxLen) {
+      return !(field in request.resource.data) ||
+             (request.resource.data[field] is string && request.resource.data[field].size() <= maxLen);
+    }
+
+    // Validation des demandes d'inscription soumises en ligne
+    function isValidInscriptionCreation(data) {
+      return hasRequiredFields(['id', 'date', 'nom', 'prenom', 'telephone', 'formuleId', 'formuleNom', 'montantTotal', 'statut']) &&
+             validString('id', 8, 30) &&
+             validString('nom', 2, 60) &&
+             validString('prenom', 2, 60) &&
+             validString('telephone', 8, 20) &&
+             validString('formuleId', 2, 50) &&
+             validString('formuleNom', 2, 100) &&
+             data.montantTotal is number && data.montantTotal > 0 &&
+             data.statut == 'nouvelle' && // Toute nouvelle inscription DOIT être au statut 'nouvelle'
+             data.nationalite in ['nationale', 'etranger'] &&
+             validOptionalString('whatsapp', 25) &&
+             validOptionalString('email', 100) &&
+             validOptionalString('quartier', 100) &&
+             validOptionalString('preferenceCoaching', 100) &&
+             validOptionalString('disponibilitePratique', 100) &&
+             validOptionalString('notes', 1000) &&
+             (!( 'piecesPretes' in data ) || (data.piecesPretes is list && data.piecesPretes.size() <= 10));
+    }
+
+    // Validation des modifications d'inscription par l'administrateur
+    function isValidInscriptionUpdate(data) {
+      return hasRequiredFields(['id', 'nom', 'prenom', 'telephone', 'statut']) &&
+             data.statut in ['nouvelle', 'contactee', 'en_cours', 'validee', 'rejetee'] &&
+             validOptionalString('notes', 2000);
+    }
+
+    // ===============================================================
+    // Collection: Inscriptions
+    // ===============================================================
+    match /inscriptions/{inscriptionId} {
+      // 1. N'importe quel candidat peut soumettre sa propre inscription en ligne
+      //    avec validation stricte des champs et statut initial forcé à 'nouvelle'
+      allow create: if isValidInscriptionCreation(request.resource.data);
+
+      // 2. Protection RGPD / APDP des données personnelles :
+      //    SEUL l'administrateur authentifié d'EDEN CONDUITE peut consulter,
+      //    lister, modifier le statut ou supprimer les dossiers candidats.
+      allow read: if isAdmin();
+      allow update: if isAdmin() && isValidInscriptionUpdate(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // ===============================================================
+    // Collection: Admins
+    // ===============================================================
+    match /admins/{adminId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ===============================================================
+    // Règle par défaut : Verrouillage total pour toute autre collection
+    // ===============================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

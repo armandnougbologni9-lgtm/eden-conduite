@@ -1,18 +1,19 @@
 /**
  * EDEN CONDUITE — Logique du tableau de bord administrateur (admin.js)
- * Gère l'authentification PIN, le calcul des KPIs, le filtrage des inscriptions,
- * l'affichage détaillé, la prise de notes et l'exportation CSV.
+ * Gère l'authentification sécurisée, la synchronisation Cloud, le calcul des KPIs,
+ * le filtrage des inscriptions, l'affichage détaillé, la prise de notes et l'exportation CSV.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initAdminAuth();
   initDashboardEvents();
+  initActivityTracker();
 });
 
 let currentOpenId = null;
 
 /* ==========================================================================
-   1. AUTHENTIFICATION & SESSION
+   1. AUTHENTIFICATION & SESSION SÉCURISÉE
    ========================================================================== */
 function initAdminAuth() {
   const loginScreen = document.getElementById('admin-login-screen');
@@ -22,6 +23,11 @@ function initAdminAuth() {
   const btnLogout = document.getElementById('btn-admin-logout');
 
   function checkSession() {
+    const lock = EdenStorage.isLockedOut();
+    if (lock.locked) {
+      showToast(`Accès temporairement verrouillé (${lock.minutes} min restantes).`, "error");
+    }
+
     if (EdenStorage.isAdminLoggedIn()) {
       if (loginScreen) loginScreen.style.display = 'none';
       if (dashboardWrapper) dashboardWrapper.classList.add('active');
@@ -37,14 +43,16 @@ function initAdminAuth() {
   }
 
   if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const code = pinInput.value;
-      if (EdenStorage.loginAdmin(code)) {
+      
+      try {
+        await EdenStorage.loginAdmin(code);
         showToast("Connexion réussie à l'espace administrateur", "success");
         checkSession();
-      } else {
-        showToast("Code PIN incorrect. Code par défaut : eden2026", "error");
+      } catch (err) {
+        showToast(err.message || "Code PIN incorrect.", "error");
         pinInput.value = '';
         pinInput.focus();
       }
@@ -54,7 +62,7 @@ function initAdminAuth() {
   if (btnLogout) {
     btnLogout.addEventListener('click', () => {
       EdenStorage.logoutAdmin();
-      showToast("Déconnexion effectuée.", "info");
+      showToast("Déconnexion sécurisée effectuée.", "info");
       checkSession();
     });
   }
@@ -63,10 +71,41 @@ function initAdminAuth() {
   checkSession();
 }
 
+// Surveillance de l'inactivité (Auto-logout après 20 min)
+function initActivityTracker() {
+  const resetTimer = () => {
+    if (sessionStorage.getItem(EdenStorage.ADMIN_AUTH_KEY) === 'true') {
+      sessionStorage.setItem(EdenStorage.ADMIN_AUTH_TIME_KEY, String(Date.now()));
+    }
+  };
+
+  ['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, resetTimer, { passive: true });
+  });
+
+  // Vérification périodique toutes les minutes
+  setInterval(() => {
+    if (sessionStorage.getItem(EdenStorage.ADMIN_AUTH_KEY) === 'true') {
+      if (!EdenStorage.isAdminLoggedIn()) {
+        showToast("Session expirée pour inactivité. Veuillez vous reconnecter.", "info");
+        const loginScreen = document.getElementById('admin-login-screen');
+        const dashboardWrapper = document.getElementById('admin-dashboard-wrapper');
+        if (loginScreen) loginScreen.style.display = 'flex';
+        if (dashboardWrapper) dashboardWrapper.classList.remove('active');
+      }
+    }
+  }, 60000);
+}
+
 /* ==========================================================================
    2. CHARGEMENT DU DASHBOARD & KPIS
    ========================================================================== */
-function renderDashboard() {
+async function renderDashboard() {
+  // Synchroniser avec Cloud Firestore si disponible
+  if (window.EdenFirebase && window.EdenFirebase.configured) {
+    await EdenStorage.syncFromCloud();
+  }
+
   const stats = EdenStorage.getStats();
 
   // Rendu des métriques KPIs
@@ -86,6 +125,21 @@ function renderDashboard() {
     badgeSidebar.style.display = stats.nouvelles > 0 ? 'inline-block' : 'none';
   }
 
+  // Indicateur statut de synchronisation Cloud
+  const cloudDot = document.getElementById('cloud-sync-dot');
+  const cloudText = document.getElementById('cloud-sync-text');
+  if (cloudDot && cloudText) {
+    if (window.EdenFirebase && window.EdenFirebase.configured) {
+      cloudDot.style.background = '#10B981';
+      cloudText.textContent = "Cloud Firestore Connecté";
+      cloudText.style.color = '#34D399';
+    } else {
+      cloudDot.style.background = '#F59E0B';
+      cloudText.textContent = "Mode Sécurisé (Local)";
+      cloudText.style.color = '#94A3B8';
+    }
+  }
+
   // Rendu de la table
   renderTable();
 }
@@ -95,7 +149,7 @@ function formatFCFA(montant) {
 }
 
 /* ==========================================================================
-   3. TABLEAU DES CANDIDATURES & FILTRAGE
+   3. TABLEAU DES CANDIDATURES & FILTRAGE (AVEC PROTECTION ANTI-XSS)
    ========================================================================== */
 function renderTable() {
   const tableBody = document.getElementById('admin-inscriptions-tbody');
@@ -108,17 +162,18 @@ function renderTable() {
   const list = EdenStorage.getAll();
 
   const filtered = list.filter(item => {
-    // Filtre texte (nom, prénom, tél, dossier ID)
+    const nomStr = String(item.nom || '').toLowerCase();
+    const prenomStr = String(item.prenom || '').toLowerCase();
+    const telStr = String(item.telephone || '');
+    const idStr = String(item.id || '').toLowerCase();
+
     const matchSearch = !searchVal || 
-      item.nom.toLowerCase().includes(searchVal) ||
-      item.prenom.toLowerCase().includes(searchVal) ||
-      item.telephone.includes(searchVal) ||
-      item.id.toLowerCase().includes(searchVal);
+      nomStr.includes(searchVal) ||
+      prenomStr.includes(searchVal) ||
+      telStr.includes(searchVal) ||
+      idStr.includes(searchVal);
 
-    // Filtre statut
     const matchStatut = filterStatut === 'all' || item.statut === filterStatut;
-
-    // Filtre formule
     const matchFormule = filterFormule === 'all' || item.formuleId === filterFormule;
 
     return matchSearch && matchStatut && matchFormule;
@@ -136,11 +191,19 @@ function renderTable() {
   }
 
   tableBody.innerHTML = filtered.map(item => {
+    const safeId = EdenStorage.escapeHTML(item.id);
+    const safeNom = EdenStorage.escapeHTML(item.nom);
+    const safePrenom = EdenStorage.escapeHTML(item.prenom);
+    const safeQuartier = EdenStorage.escapeHTML(item.quartier || 'Calavi');
+    const safeTelephone = EdenStorage.escapeHTML(item.telephone);
+    const safeWhatsapp = EdenStorage.escapeHTML(item.whatsapp);
+    const safeFormule = EdenStorage.escapeHTML(item.formuleNom);
+    const safeStatut = EdenStorage.escapeHTML(item.statut);
+
     const dateFormatted = new Date(item.date).toLocaleDateString('fr-FR', {
       day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
     });
 
-    const statutClass = item.statut;
     const statutLabels = {
       nouvelle: "Nouvelle",
       contactee: "Contactée",
@@ -152,36 +215,36 @@ function renderTable() {
     return `
       <tr>
         <td>
-          <strong style="font-family: monospace; color: var(--admin-sidebar);">${item.id}</strong>
+          <strong style="font-family: monospace; color: var(--admin-sidebar);">${safeId}</strong>
         </td>
         <td style="color: #64748B; font-size: 0.85rem;">${dateFormatted}</td>
         <td>
-          <div style="font-weight: 700; color: var(--admin-sidebar);">${item.nom} ${item.prenom}</div>
-          <div style="font-size: 0.78rem; color: #64748B;">${item.quartier || 'Calavi'} • ${item.nationalite === 'etranger' ? 'Étranger' : 'Béninois'}</div>
+          <div style="font-weight: 700; color: var(--admin-sidebar);">${safeNom} ${safePrenom}</div>
+          <div style="font-size: 0.78rem; color: #64748B;">${safeQuartier} • ${item.nationalite === 'etranger' ? 'Étranger' : 'Béninois'}</div>
         </td>
         <td>
           <div style="display: flex; align-items: center; gap: 0.4rem;">
-            <span>${item.telephone}</span>
-            ${item.whatsapp ? `
-              <a href="https://wa.me/229${item.whatsapp}?text=Bonjour%20${encodeURIComponent(item.prenom)},%20auto-%C3%A9cole%20EDEN%20CONDUITE%20vous%20contacte%20concernant%20votre%20dossier%20${item.id}." target="_blank" title="Contacter sur WhatsApp" style="color: #25D366; font-size: 1.1rem; line-height: 1;">
+            <span>${safeTelephone}</span>
+            ${safeWhatsapp ? `
+              <a href="https://wa.me/229${encodeURIComponent(safeWhatsapp.replace(/\s+/g, ''))}?text=Bonjour%20${encodeURIComponent(item.prenom || '')},%20auto-%C3%A9cole%20EDEN%20CONDUITE%20vous%20contacte%20concernant%20votre%20dossier%20${encodeURIComponent(item.id)}." target="_blank" rel="noopener noreferrer" title="Contacter sur WhatsApp" style="color: #25D366; font-size: 1.1rem; line-height: 1;">
                 💬
               </a>
             ` : ''}
           </div>
         </td>
         <td>
-          <div style="font-weight: 600;">${item.formuleNom}</div>
+          <div style="font-weight: 600;">${safeFormule}</div>
           <div style="font-size: 0.82rem; font-weight: 700; color: var(--admin-primary);">${formatFCFA(item.montantTotal)}</div>
         </td>
         <td>
-          <span class="status-pill ${statutClass}">${statutLabels[item.statut] || item.statut}</span>
+          <span class="status-pill ${safeStatut}">${statutLabels[item.statut] || safeStatut}</span>
         </td>
         <td>
           <div class="table-actions-cell">
-            <button class="btn-icon-action" onclick="openDetailModal('${item.id}')" title="Voir la fiche détaillée">
+            <button class="btn-icon-action" data-id="${safeId}" onclick="openDetailModal(this.getAttribute('data-id'))" title="Voir la fiche détaillée">
               👁️
             </button>
-            <button class="btn-icon-action" onclick="deleteDemande('${item.id}')" title="Supprimer cette demande" style="color: #EF4444;">
+            <button class="btn-icon-action" data-id="${safeId}" onclick="deleteDemande(this.getAttribute('data-id'))" title="Supprimer cette demande" style="color: #EF4444;">
               🗑️
             </button>
           </div>
@@ -192,7 +255,7 @@ function renderTable() {
 }
 
 /* ==========================================================================
-   4. MODAL DETAIL CANDIDAT & GESTION
+   4. MODAL DETAIL CANDIDAT (TEXTCONTENT SÉCURISÉ)
    ========================================================================== */
 function openDetailModal(id) {
   const item = EdenStorage.getById(id);
@@ -208,11 +271,7 @@ function openDetailModal(id) {
     groupe_sanguin: "Attestation groupe sanguin"
   };
 
-  const piecesList = Array.isArray(item.piecesPretes) && item.piecesPretes.length
-    ? item.piecesPretes.map(p => `✓ ${piecesLabels[p] || p}`).join('<br>')
-    : 'Aucune pièce cochée';
-
-  // Remplissage
+  // Remplissage sécurisé sans injection
   document.getElementById('modal-dossier-id').textContent = item.id;
   document.getElementById('modal-candidat-nom').textContent = `${item.nom} ${item.prenom}`;
   document.getElementById('modal-telephone').textContent = item.telephone;
@@ -223,8 +282,22 @@ function openDetailModal(id) {
   document.getElementById('modal-formule').textContent = item.formuleNom;
   document.getElementById('modal-montant').textContent = formatFCFA(item.montantTotal);
   document.getElementById('modal-coaching').textContent = item.preferenceCoaching || 'Non spécifié';
-  document.getElementById('modal-pieces').innerHTML = piecesList;
   
+  // Pièces fournies (construction DOM propre)
+  const piecesEl = document.getElementById('modal-pieces');
+  if (piecesEl) {
+    piecesEl.innerHTML = '';
+    if (Array.isArray(item.piecesPretes) && item.piecesPretes.length) {
+      item.piecesPretes.forEach(p => {
+        const div = document.createElement('div');
+        div.textContent = `✓ ${piecesLabels[p] || p}`;
+        piecesEl.appendChild(div);
+      });
+    } else {
+      piecesEl.textContent = 'Aucune pièce cochée';
+    }
+  }
+
   const selectStatut = document.getElementById('modal-select-statut');
   if (selectStatut) selectStatut.value = item.statut;
 
@@ -233,7 +306,7 @@ function openDetailModal(id) {
 
   // Liens d'action rapide
   const btnAppel = document.getElementById('modal-btn-call');
-  if (btnAppel) btnAppel.href = `tel:+229${item.telephone.replace(/\s+/g, '')}`;
+  if (btnAppel) btnAppel.href = `tel:+229${encodeURIComponent((item.telephone || '').replace(/\s+/g, ''))}`;
 
   const btnWa = document.getElementById('modal-btn-whatsapp');
   if (btnWa) {
@@ -243,7 +316,8 @@ function openDetailModal(id) {
       `Votre dossier est actuellement : *${item.statut.toUpperCase()}*.\n` +
       `Pourriez-vous nous préciser quand vous souhaitez passer au secrétariat pour finaliser votre inscription ?`
     );
-    btnWa.href = `https://wa.me/229${(item.whatsapp || item.telephone).replace(/\s+/g, '')}?text=${msg}`;
+    btnWa.href = `https://wa.me/229${encodeURIComponent((item.whatsapp || item.telephone || '').replace(/\s+/g, ''))}?text=${msg}`;
+    btnWa.rel = "noopener noreferrer";
   }
 
   modal.classList.add('active');
@@ -255,17 +329,17 @@ function closeDetailModal() {
   currentOpenId = null;
 }
 
-function saveModalChanges() {
+async function saveModalChanges() {
   if (!currentOpenId) return;
 
   const selectStatut = document.getElementById('modal-select-statut');
   const notesInput = document.getElementById('modal-notes');
 
   if (selectStatut) {
-    EdenStorage.updateStatut(currentOpenId, selectStatut.value);
+    await EdenStorage.updateStatut(currentOpenId, selectStatut.value);
   }
   if (notesInput) {
-    EdenStorage.updateNotes(currentOpenId, notesInput.value);
+    await EdenStorage.updateNotes(currentOpenId, notesInput.value);
   }
 
   showToast("Fiche candidat mise à jour avec succès !", "success");
@@ -273,29 +347,26 @@ function saveModalChanges() {
   renderDashboard();
 }
 
-function deleteDemande(id) {
-  if (confirm(`Confirmez-vous la suppression de la demande ${id} ?`)) {
-    EdenStorage.delete(id);
+async function deleteDemande(id) {
+  if (confirm(`Confirmez-vous la suppression sécurisée de la demande ${id} ?`)) {
+    await EdenStorage.delete(id);
     showToast(`Demande ${id} supprimée.`, "info");
     renderDashboard();
   }
 }
 
 /* ==========================================================================
-   5. EVENEMENTS GLOBAUX & EXPORT CSV
+   5. ÉVÉNEMENTS GLOBAUX & EXPORT CSV
    ========================================================================== */
 function initDashboardEvents() {
-  // Recherche
   const searchInput = document.getElementById('table-search');
   if (searchInput) searchInput.addEventListener('input', renderTable);
 
-  // Filtres
   const filterStatut = document.getElementById('filter-statut');
   const filterFormule = document.getElementById('filter-formule');
   if (filterStatut) filterStatut.addEventListener('change', renderTable);
   if (filterFormule) filterFormule.addEventListener('change', renderTable);
 
-  // Bouton Export CSV
   const btnExport = document.getElementById('btn-export-csv');
   if (btnExport) {
     btnExport.addEventListener('click', () => {
@@ -308,7 +379,6 @@ function initDashboardEvents() {
     });
   }
 
-  // Bouton Réinitialisation Démo
   const btnResetDemo = document.getElementById('btn-reset-demo');
   if (btnResetDemo) {
     btnResetDemo.addEventListener('click', () => {
@@ -320,7 +390,6 @@ function initDashboardEvents() {
     });
   }
 
-  // Fermeture modale
   const modalClose = document.getElementById('modal-close-btn');
   if (modalClose) modalClose.addEventListener('click', closeDetailModal);
 
@@ -328,7 +397,7 @@ function initDashboardEvents() {
   if (btnSaveModal) btnSaveModal.addEventListener('click', saveModalChanges);
 }
 
-// Rendre accessible aux onclick HTML
+// Rendre accessible aux handlers inline
 window.openDetailModal = openDetailModal;
 window.deleteDemande = deleteDemande;
 window.closeDetailModal = closeDetailModal;
