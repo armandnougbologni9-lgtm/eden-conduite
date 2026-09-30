@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Administration — Auto-école EDEN CONDUITE</title>
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/logo-eden-conduite.jpg">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ==========================================================================
+       1. ECRAN DE CONNEXION ADMIN
+       ========================================================================== -->
+  <div id="admin-login-screen" class="admin-login-screen">
+    <div class="admin-login-card">
+      <img src="assets/images/logo-eden-conduite.jpg" alt="Logo EDEN CONDUITE" class="login-brand-logo">
+      <h2 class="login-title">Administration EDEN CONDUITE</h2>
+      <p class="login-subtitle">Gestion sécurisée des demandes d'inscription</p>
+
+      <form id="admin-login-form">
+        <div class="login-form-group">
+          <label for="admin-pin-input" class="login-label">Code PIN Administrateur</label>
+          <input type="password" id="admin-pin-input" class="login-input" placeholder="••••••••" required autofocus>
+        </div>
+        <button type="submit" class="login-btn">Accéder au tableau de bord</button>
+      </form>
+
+      <div class="login-default-hint">
+        Code PIN de démonstration : <strong>eden2026</strong>
+      </div>
+      
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--admin-muted); text-decoration: underline;">
+          ← Retourner au site public
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. TABLEAU DE BORD PRINCIPAL
+       ========================================================================== -->
+  <div id="admin-dashboard-wrapper" class="admin-dashboard-wrapper">
+    <!-- Barre latérale (Sidebar) -->
+    <aside class="admin-sidebar">
+      <div>
+        <div class="sidebar-header">
+          <img src="assets/images/logo-eden-conduite.jpg" alt="EDEN CONDUITE" class="sidebar-logo">
+          <div>
+            <div class="sidebar-title">EDEN <span>CONDUITE</span></div>
+            <div class="sidebar-sub">Espace Secrétariat</div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav-menu">
+          <a class="sidebar-nav-item active">
+            <span>📋 Inscriptions reçues</span>
+            <span id="sidebar-badge-new" class="sidebar-badge" style="display: none;">0 nv</span>
+          </a>
+          <a href="index.html" target="_blank" class="sidebar-nav-item">
+            <span>🌐 Voir le site public</span>
+            <span>↗</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="btn-reset-demo" class="sidebar-action-btn" title="Réinitialiser les exemples de démo">
+          <span>🔄 Réinitialiser données démo</span>
+        </button>
+        <button id="btn-admin-logout" class="sidebar-action-btn" style="color: #F87171;">
+          <span>🚪 Déconnexion</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Contenu Principal -->
+    <main class="admin-main-content">
+      <div class="admin-topbar">
+        <div class="admin-page-heading">
+          <h1>Gestion des Inscriptions</h1>
+          <p>Consultez, filtrez et traitez les demandes d'inscription enregistrées en ligne.</p>
+        </div>
+
+        <div class="admin-top-actions">
+          <button id="btn-export-csv" class="admin-btn admin-btn-success">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            <span>Exporter en CSV / Excel</span>
+          </button>
+          <a href="index.html" class="admin-btn admin-btn-outline">
+            <span>Visiter le site</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- KPIs (Cartes métriques) -->
+      <div class="admin-kpis-grid">
+        <div class="kpi-card kpi-blue">
+          <div class="kpi-label">Total Inscriptions</div>
+          <div class="kpi-value" id="kpi-total">0</div>
+          <div class="kpi-sub">Depuis le lancement</div>
+        </div>
+
+        <div class="kpi-card kpi-red">
+          <div class="kpi-label">Nouvelles Demandes</div>
+          <div class="kpi-value" id="kpi-nouvelles" style="color: var(--admin-accent);">0</div>
+          <div class="kpi-sub">À contacter en priorité</div>
+        </div>
+
+        <div class="kpi-card kpi-orange">
+          <div class="kpi-label">Dossiers en cours</div>
+          <div class="kpi-value" id="kpi-encours" style="color: var(--admin-primary);">0</div>
+          <div class="kpi-sub">Contactés ou en formation</div>
+        </div>
+
+        <div class="kpi-card kpi-green">
+          <div class="kpi-label">Montant Prévisionnel</div>
+          <div class="kpi-value" id="kpi-montant" style="font-size: 1.55rem; color: #10B981;">0 FCFA</div>
+          <div class="kpi-sub">Chiffre total estimé</div>
+        </div>
+      </div>
+
+      <!-- Tableau des candidatures -->
+      <div class="admin-table-card">
+        <div class="table-toolbar">
+          <div class="table-search-box">
+            <span class="table-search-icon">🔍</span>
+            <input type="text" id="table-search" placeholder="Rechercher nom, tél, dossier...">
+          </div>
+
+          <div class="table-filters-group">
+            <select id="filter-statut" class="table-filter-select">
+              <option value="all">Tous les statuts</option>
+              <option value="nouvelle">Nouvelles demandes</option>
+              <option value="contactee">Contactées</option>
+              <option value="en_cours">Dossiers en cours</option>
+              <option value="validee">Validées</option>
+              <option value="rejetee">Rejetées</option>
+            </select>
+
+            <select id="filter-formule" class="table-filter-select">
+              <option value="all">Toutes les formations</option>
+              <option value="permis-b-complet">Permis B (Complet)</option>
+              <option value="permis-b-accelere">Permis B (Accéléré)</option>
+              <option value="rec-6h">Recyclage</option>
+              <option value="permis-motos">Motos (A)</option>
+              <option value="permis-c">Poids Lourds (C / Dr)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Réf. Dossier</th>
+                <th>Date</th>
+                <th>Candidat</th>
+                <th>Téléphone / WhatsApp</th>
+                <th>Formule & Montant</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-inscriptions-tbody">
+              <!-- Rempli dynamiquement via admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL DE FICHE DETAILLEE CANDIDAT
+       ========================================================================== -->
+  <div id="admin-detail-modal" class="admin-modal">
+    <div class="admin-modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Fiche Inscription : <span id="modal-dossier-id" style="color: var(--admin-primary); font-family: monospace;"></span></h3>
+          <span style="font-size: 0.82rem; color: var(--admin-muted);">Détails complets du dossier candidat</span>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Informations personnelles -->
+        <div class="detail-section-title">Coordonnées du Candidat</div>
+        <div class="detail-grid">
+          <div>
+            <div class="detail-item-label">Nom et Prénom :</div>
+            <div class="detail-item-val" id="modal-candidat-nom">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Téléphone d'appel :</div>
+            <div class="detail-item-val" id="modal-telephone">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Numéro WhatsApp :</div>
+            <div class="detail-item-val" id="modal-whatsapp">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Quartier & Résidence :</div>
+            <div class="detail-item-val" id="modal-quartier">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Email :</div>
+            <div class="detail-item-val" id="modal-email">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Nationalité :</div>
+            <div class="detail-item-val" id="modal-nationalite">—</div>
+          </div>
+        </div>
+
+        <!-- Formation et tarification -->
+        <div class="detail-section-title">Formation & Créneaux</div>
+        <div class="detail-grid">
+          <div>
+            <div class="detail-item-label">Formule choisie :</div>
+            <div class="detail-item-val" id="modal-formule" style="color: var(--admin-primary);">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Montant total calculé :</div>
+            <div class="detail-item-val" id="modal-montant" style="font-size: 1.15rem; color: #10B981;">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Coaching théorique choisi :</div>
+            <div class="detail-item-val" id="modal-coaching">—</div>
+          </div>
+          <div>
+            <div class="detail-item-label">Pièces déclarées prêtes :</div>
+            <div class="detail-item-val" id="modal-pieces" style="font-size: 0.85rem; font-weight: normal; color: var(--admin-sidebar);">—</div>
+          </div>
+        </div>
+
+        <!-- Traitement & Notes internes -->
+        <div class="detail-section-title">Gestion & Suivi Administratif</div>
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="login-label">Statut du dossier</label>
+          <select id="modal-select-statut" class="table-filter-select" style="width: 100%;">
+            <option value="nouvelle">Nouvelle demande (À traiter)</option>
+            <option value="contactee">Candidat contacté</option>
+            <option value="en_cours">Dossier en cours de constitution</option>
+            <option value="validee">Dossier validé & Inscription confirmée</option>
+            <option value="rejetee">Demande rejetée ou annulée</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="login-label">Notes internes (suivi des versements, rdv...)</label>
+          <textarea id="modal-notes" class="form-control" rows="3" placeholder="Ex: Premier acompte versé, visite médicale reçue..."></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div style="display: flex; gap: 0.75rem;">
+          <a id="modal-btn-call" class="admin-btn admin-btn-outline" href="#">
+            📞 Appeler
+          </a>
+          <a id="modal-btn-whatsapp" class="admin-btn" style="background: #25D366; color: #FFFFFF;" href="#" target="_blank" rel="noopener">
+            💬 WhatsApp direct
+          </a>
+        </div>
+
+        <button id="modal-btn-save" class="admin-btn admin-btn-primary">
+          💾 Enregistrer les modifications
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteneur Toast -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
