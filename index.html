@@ -1,21 +1,1200 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>EDEN CONDUITE · Auto-école au Bénin | Formations & Inscription en Ligne</title>
-    <meta name="description" content="Auto-école EDEN CONDUITE au Bénin. Formations permis A, B, C, D, perfectionnement et code de la route. Inscription en ligne simple et rapide (Frais : 5 000 FCFA)." />
-    <meta property="og:title" content="EDEN CONDUITE · Auto-école au Bénin" />
-    <meta property="og:description" content="Formations permis moto et auto au Bénin. Inscription en ligne à partir de 5 000 FCFA." />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#EA580C" />
-    <link rel="icon" type="image/jpeg" href="/assets/images/logo-eden-conduite.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#FBFBFC] text-[#0F172A] font-sans antialiased selection:bg-orange-500/20 selection:text-orange-900 min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>EDEN CONDUITE · Auto-école au Bénin | Formations & Inscription en Ligne</title>
+  
+  <meta name="description" content="Auto-école EDEN CONDUITE au Bénin (Zopah / Akassato, Calavi). Formations permis A, B, C, D, perfectionnement et code de la route. Inscription en ligne à 5 000 FCFA. Agrément officiel ANaTT N° 2551.">
+  <meta name="keywords" content="auto-école bénin, permis de conduire calavi, eden conduite, permis b abomey calavi, code de la route benin, anatt benin, conduite akassato">
+  
+  <meta property="og:title" content="EDEN CONDUITE · Auto-école au Bénin">
+  <meta property="og:description" content="Formation certifiée au permis de conduire à Abomey-Calavi (Zopah - Akassato). Inscription simple à 5 000 FCFA.">
+  <meta property="og:image" content="assets/images/logo-eden-conduite.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#EA580C">
+
+  <link rel="icon" type="image/jpeg" href="assets/images/logo-eden-conduite.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Feuilles de style officielles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. BANDEAU HAUT OFFICIEL (AGRÉMENT D'ÉTAT & CONTACTS)
+       ========================================================================== -->
+  <div style="background: #0F172A; color: #CBD5E1; font-size: 0.75rem; padding: 0.45rem 1rem; border-bottom: 1px solid #1E293B;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <span style="background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px;">
+          ✓ Agrément État Bénin : N° 2551/MIT/DC/SGM/ANaTT/DERC/SERC/SA
+        </span>
+        <span style="color: #94A3B8;">📍 Zopah en face du Centre des Handicapés d'Akassato, Calavi</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem; font-weight: 600;">
+        <a href="tel:+22997239830" style="color: #F8FAFC;">📞 (+229) 97 23 98 30</a>
+        <span style="color: #475569;">|</span>
+        <a href="https://wa.me/22997239830" target="_blank" rel="noopener noreferrer" style="color: #34D399;">💬 WhatsApp Secrétariat</a>
+        <span style="color: #475569;">|</span>
+        <a href="admin.html" style="color: #F59E0B; text-decoration: underline;">🔒 Accès Direction</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. BARRE DE NAVIGATION PRINCIPALE
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#presentation" class="nav-brand" aria-label="Accueil EDEN CONDUITE">
+        <img src="assets/images/logo-eden-conduite.jpg" alt="Logo EDEN CONDUITE" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">EDEN <span>CONDUITE</span></span>
+          <span class="nav-brand-sub">« Votre savoir-faire est notre raison d'être »</span>
+        </div>
+      </a>
+
+      <!-- Liens Desktop -->
+      <nav class="nav-menu" aria-label="Navigation principale">
+        <a href="#presentation" class="nav-link active">Accueil</a>
+        <a href="#tarifs" class="nav-link">Tarifs Officiels</a>
+        <a href="#devis" class="nav-link">Simulateur Devis</a>
+        <a href="#horaires" class="nav-link">Horaires</a>
+        <a href="#dossier" class="nav-link">Pièces Requises</a>
+        <a href="#quiz" class="nav-link">Test Code ANaTT</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Actions de droite -->
+      <div class="nav-actions">
+        <button type="button" onclick="openAssistantModal()" class="btn btn-secondary btn-sm" style="display: inline-flex; border-color: #FED7AA; background: #FFF7ED; color: #C2410C;">
+          ✨ Moniteur IA
+        </button>
+
+        <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-sm">
+          S'inscrire en Ligne
+        </button>
+
+        <!-- Déclencheur Mobile Burger -->
+        <button id="burger-toggle" class="burger-toggle" aria-label="Ouvrir le menu">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tiroir de Navigation Mobile -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-nav-links">
+      <a href="#presentation" class="mobile-nav-link">🚗 Accueil</a>
+      <a href="#tarifs" class="mobile-nav-link">💰 Formations & Tarifs (FCFA)</a>
+      <a href="#devis" class="mobile-nav-link">🧮 Simulateur de Devis</a>
+      <a href="#horaires" class="mobile-nav-link">🕒 Horaires des Cours</a>
+      <a href="#dossier" class="mobile-nav-link">📋 Dossier d'Examen ANaTT</a>
+      <a href="#quiz" class="mobile-nav-link">🚦 Test d'Entraînement au Code</a>
+      <a href="#contact" class="mobile-nav-link">📍 Contact & Accès GPS</a>
+      <a href="admin.html" class="mobile-nav-link" style="color: #EA580C;">🔒 Espace Direction Admin</a>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+      <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-block btn-lg">
+        Lancer mon inscription (5 000 FCFA)
+      </button>
+      <button type="button" onclick="openAssistantModal()" class="btn btn-secondary btn-block">
+        ✨ Poser une question au Moniteur IA
+      </button>
+      <a href="tel:+22997239830" class="btn btn-secondary btn-block">
+        📞 Appeler le secrétariat
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1 : HERO & ACCRÉDITATION OFFICIELLE
+         ========================================================================== -->
+    <section id="presentation" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-agrement">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <span>Autorisation N° 2551/MIT/DC/SGM/ANaTT/DERC/SERC/SA</span>
+          </div>
+
+          <h1 class="hero-title">
+            Votre permis de conduire réussi au <span>Bénin</span> du premier coup.
+          </h1>
+
+          <p class="hero-lead">
+            Auto-école <strong>EDEN CONDUITE</strong> à Abomey-Calavi (Zopah / Akassato). Formation rigoureuse, moniteurs certifiés d'État et préparation complète aux épreuves théoriques et pratiques de l'ANaTT.
+          </p>
+
+          <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.88rem; font-weight: 600;">
+            <span style="background: #FFF7ED; color: #EA580C; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid #FED7AA;">
+              ✓ Droits d'inscription : <strong>5 000 FCFA</strong>
+            </span>
+            <span style="background: #ECFDF5; color: #065F46; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid #A7F3D0;">
+              ✓ Cours Code Matin & Soir (18h-20h)
+            </span>
+            <span style="background: #F1F5F9; color: #334155; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid #CBD5E1;">
+              ✓ Constitution du dossier ANaTT incluse
+            </span>
+          </div>
+
+          <div class="hero-actions">
+            <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-lg">
+              S'inscrire en Ligne →
+            </button>
+            <a href="#devis" class="btn btn-outline btn-lg">
+              🧮 Simuler mon Devis (FCFA)
+            </a>
+            <button type="button" onclick="openAssistantModal()" class="btn btn-secondary btn-lg" style="border-color: #FED7AA; color: #C2410C;">
+              ✨ Moniteur IA
+            </button>
+          </div>
+
+          <div class="hero-proof-bar">
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">96%</span>
+              <span class="hero-proof-label">Taux de réussite officiel</span>
+            </div>
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">1 500+</span>
+              <span class="hero-proof-label">Candidats formés</span>
+            </div>
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">100%</span>
+              <span class="hero-proof-label">Moniteurs agréés d'État</span>
+            </div>
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">3 Mois</span>
+              <span class="hero-proof-label">Validité d'accompagnement</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte de Présentation Visuelle -->
+        <div class="hero-card-visual">
+          <div class="hero-visual-header">
+            <div class="hero-visual-icon">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <div>
+              <div class="hero-visual-title">Auto-école EDEN CONDUITE</div>
+              <div class="hero-visual-sub">« Votre savoir-faire est notre raison d'être »</div>
+            </div>
+          </div>
+
+          <div class="hero-visual-features">
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Coaching théorique :</strong> Lundi au Mercredi (Matinée 08h-11h ou Soirée 18h-20h en salle climatisée)</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Conduite pratique :</strong> Jeudi, Vendredi et Samedi sur véhicules récents double commande</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Localisation :</strong> Sise à Zopah en face du Centre des Handicapés d'Akassato, Calavi</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Facilités :</strong> Possibilité de règlement échelonné par tranches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2 : GRILLE TARIFAIRE OFFICIELLE (FCFA)
+         ========================================================================== -->
+    <section id="tarifs" class="section section-bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transparence Totale</span>
+          <h2 class="section-title">Nos Formations & Tarifs Officiels</h2>
+          <p class="section-desc">
+            Droits d'inscription officiels fixés à <strong>5 000 FCFA</strong> (valables 3 mois). Suivi complet du dossier d'examen ANaTT inclus.
+          </p>
+        </div>
+
+        <!-- Filtre rapide par catégorie -->
+        <div class="category-filter-nav" role="tablist">
+          <button type="button" class="filter-tab-btn active" data-filter="all">Toutes les offres</button>
+          <button type="button" class="filter-tab-btn" data-filter="auto">🚗 Automobile (Permis B)</button>
+          <button type="button" class="filter-tab-btn" data-filter="moto">🏍️ Motos (A1, A2, A3)</button>
+          <button type="button" class="filter-tab-btn" data-filter="lourd">🚛 Poids Lourds (C, C1, D)</button>
+          <button type="button" class="filter-tab-btn" data-filter="recyclage">🔄 Perfectionnement</button>
+        </div>
+
+        <!-- Grille des cartes de formations -->
+        <div class="formations-grid">
+
+          <!-- 1 : Permis B Complet -->
+          <article class="formation-card featured" data-category="auto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie B (Auto)</span>
+                <span class="badge badge-orange">Le Plus Choisi</span>
+              </div>
+              <h3 class="formation-card-title">Permis B — Formation Complète</h3>
+              <p class="formation-card-desc">
+                La formule idéale pour maîtriser le code et la conduite automobile, et réussir l'examen officiel de l'ANaTT.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">150 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 155 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Frais de dossier et suivi ANaTT inclus</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Coaching théorique complet (Matin ou Soir)</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Séances de conduite pratique sur double commande</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Examens blancs réguliers en conditions réelles</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Inscription valable 3 mois</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 2 : Permis B Accéléré -->
+          <article class="formation-card" data-category="auto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie B (Intensif)</span>
+                <span class="badge badge-navy">Formule Express</span>
+              </div>
+              <h3 class="formation-card-title">Permis B — Formule Accélérée</h3>
+              <p class="formation-card-desc">
+                Rythme condensé pour les apprenants pressés ou professionnels souhaitant obtenir leur permis rapidement.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">200 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 205 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Planning de conduite rapproché prioritaire</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Coaching théorique intensif haute fréquence</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Simulations d'examen blanc renforcées</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Accompagnement personnalisé gestion du stress</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-b-accelere')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 3 : Permis Motos -->
+          <article class="formation-card" data-category="moto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie A1 — A2 — A3</span>
+                <span class="badge badge-orange">2 Roues</span>
+              </div>
+              <h3 class="formation-card-title">Permis Motos & Deux-Roues</h3>
+              <p class="formation-card-desc">
+                Apprentissage de la conduite moto sécuritaire, maîtrise de l'équilibre, trajectoires et circulation urbaine.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">95 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 100 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Constitution et suivi du dossier d'examen</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Cours de code spécifiques aux deux-roues</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Maniement plateau et trajectoires de sécurité</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Sensibilisation au port des équipements</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-motos')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 4 : Permis C Poids Lourds -->
+          <article class="formation-card" data-category="lourd">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie Dr ou C</span>
+                <span class="badge badge-navy">Professionnel</span>
+              </div>
+              <h3 class="formation-card-title">Permis Poids Lourds C / Dr</h3>
+              <p class="formation-card-desc">
+                Destiné au transport de marchandises, camions rigides et carrières professionnelles du transport routier.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">120 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 125 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Réglementation transport de marchandises</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Prise en main des gabarits et manœuvres</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Sécurité et vérifications techniques</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Validation pratique d'examen ANaTT</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-c')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 5 : Permis C1 -->
+          <article class="formation-card" data-category="lourd">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie C1</span>
+                <span class="badge badge-navy">Transport</span>
+              </div>
+              <h3 class="formation-card-title">Permis Poids Lourds C1</h3>
+              <p class="formation-card-desc">
+                Conduite de véhicules utilitaires lourds et transport logistique intermédiaire.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">150 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 155 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Formation théorique avancée et pratique renforcée</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Manœuvres d'attelage et conduite économique</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Préparation directe aux épreuves ANaTT</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-c1')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 6 : Permis D Transport en Commun -->
+          <article class="formation-card" data-category="lourd">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie D Plein</span>
+                <span class="badge badge-navy">Voyageurs</span>
+              </div>
+              <h3 class="formation-card-title">Permis D Transport Voyageurs</h3>
+              <p class="formation-card-desc">
+                Formation de haut niveau pour la conduite d'autocars et autobus de transport collectif.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">180 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription = 185 000 FCFA</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Règles strictes de sécurité des passagers</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Conduite souple et anticipative</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Gestion des situations d'urgence</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-d')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- 7 : Perfectionnement 4h -->
+          <article class="formation-card" data-category="recyclage">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">4 Heures au Volant</span>
+              </div>
+              <h3 class="formation-card-title">Perfectionnement 4 Heures</h3>
+              <p class="formation-card-desc">
+                Idéal pour reprendre confiance en ville, se réhabituer aux démarrages en côte et aux manœuvres.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">35 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">Net sans frais cachés</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Circulation urbaine accompagnée</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Créneaux et stationnements complexes</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('rec-4h')" class="btn btn-outline btn-block">
+              Réserver 4h
+            </button>
+          </article>
+
+          <!-- 8 : Perfectionnement 6h -->
+          <article class="formation-card" data-category="recyclage">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">6 Heures au Volant</span>
+                <span class="badge badge-orange">Populaire</span>
+              </div>
+              <h3 class="formation-card-title">Perfectionnement 6 Heures</h3>
+              <p class="formation-card-desc">
+                Parcours équilibré combinant révision des priorités et conduite fluide sur les grands axes de Calavi/Cotonou.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">45 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">Net sans frais cachés</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Gestion des carrefours à fort trafic</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Conduite nocturne ou aux heures de pointe</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('rec-6h')" class="btn btn-outline btn-block">
+              Réserver 6h
+            </button>
+          </article>
+
+          <!-- 9 : Perfectionnement 10h -->
+          <article class="formation-card" data-category="recyclage">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">10 Heures au Volant</span>
+              </div>
+              <h3 class="formation-card-title">Perfectionnement 10 Heures</h3>
+              <p class="formation-card-desc">
+                Remise à niveau complète pour conducteurs n'ayant pas conduit depuis longtemps.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">70 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">Net sans frais cachés</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Remise en confiance totale et autonomie</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Parcours personnalisés selon vos besoins</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('rec-10h')" class="btn btn-outline btn-block">
+              Réserver 10h
+            </button>
+          </article>
+        </div>
+
+        <!-- Note Réglementaire Étranger -->
+        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: var(--radius-md); font-size: 0.9rem; color: #92400E; display: flex; align-items: flex-start; gap: 0.75rem;">
+          <span style="font-size: 1.2rem;">⚠️</span>
+          <div>
+            <strong>Information légale ANaTT :</strong> Pour les ressortissants étrangers résidant en République du Bénin, une quittance spéciale de <strong>20 000 FCFA</strong> est exigée par l'Agence Nationale des Transports Terrestres lors du dépôt du dossier officiel.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3 : SIMULATEUR DE DEVIS EN DIRECT
+         ========================================================================== -->
+    <section id="devis" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Calculateur Interactif</span>
+          <h2 class="section-title">Calculez votre devis en direct</h2>
+          <p class="section-desc">
+            Ajustez votre formation et vos options pour connaître le montant exact en Francs CFA.
+          </p>
+        </div>
+
+        <div class="devis-simulator-box">
+          <div class="devis-grid">
+            <!-- Formulaire de simulation -->
+            <div>
+              <div class="form-group">
+                <label class="form-label">1. Choisissez votre formation de base</label>
+                <select id="sim-formule" class="form-select">
+                  <option value="permis-b-complet" data-prix="150000" selected>Permis B — Formation Complète (150 000 FCFA)</option>
+                  <option value="permis-b-accelere" data-prix="200000">Permis B — Formule Accélérée (200 000 FCFA)</option>
+                  <option value="permis-motos" data-prix="95000">Permis Motos A1, A2, A3 (95 000 FCFA)</option>
+                  <option value="permis-c" data-prix="120000">Permis Poids Lourds C / Dr (120 000 FCFA)</option>
+                  <option value="permis-c1" data-prix="150000">Permis Poids Lourds C1 (150 000 FCFA)</option>
+                  <option value="permis-d" data-prix="180000">Permis Transport Voyageurs D (180 000 FCFA)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">2. Nationalité du candidat (Réglementation ANaTT)</label>
+                <select id="sim-nationalite" class="form-select">
+                  <option value="nationale" selected>Nationalité Béninoise (Tarif Standard)</option>
+                  <option value="etranger">Nationalité Étrangère (+20 000 FCFA quittance)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">3. Ajouter des heures de perfectionnement supplémentaires (Optionnel)</label>
+                <select id="sim-recyclage" class="form-select">
+                  <option value="none" data-prix="0" selected>Aucun ajout (Formation normale)</option>
+                  <option value="rec-4h" data-prix="35000">+ Perfectionnement 4 Heures (+35 000 FCFA)</option>
+                  <option value="rec-6h" data-prix="45000">+ Perfectionnement 6 Heures (+45 000 FCFA)</option>
+                  <option value="rec-10h" data-prix="70000">+ Perfectionnement 10 Heures (+70 000 FCFA)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Récapitulatif Devis -->
+            <div class="devis-recap-card">
+              <div class="devis-recap-title">
+                <span>🧮</span>
+                <span>Votre Devis Estimatif Net</span>
+              </div>
+
+              <div style="font-size: 0.85rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">
+                Montant total prévisionnel
+              </div>
+
+              <div id="sim-total-display" class="devis-price-total">
+                155 000 FCFA
+              </div>
+
+              <div style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-bottom: 1.5rem;">
+                Inclus : Droits d'inscription officiels (5 000 F), coaching théorique, conduite pratique et suivi d'examen ANaTT.
+                <br><br>
+                <strong style="color: #34D399;">✓ Facilités de paiement par tranches acceptées.</strong>
+              </div>
+
+              <button type="button" id="sim-btn-valider" class="btn btn-primary btn-block btn-lg" style="background: #EA580C;">
+                Valider ce devis & S'inscrire →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4 : HORAIRES DES COURS
+         ========================================================================== -->
+    <section id="horaires" class="section section-bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Organisation Pratique</span>
+          <h2 class="section-title">Horaires & Séances de Cours</h2>
+          <p class="section-desc">
+            Des plages horaires conçues pour s'adapter à votre rythme de travail ou d'études.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;">
+          <!-- Card 1 : Théorie -->
+          <div style="background: var(--color-white); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">📖</div>
+            <span style="font-size: 0.78rem; font-weight: 800; color: var(--color-primary); text-transform: uppercase;">Code de la Route</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.25rem 0 0.5rem 0;">Coaching Théorique</h3>
+            <p style="font-size: 0.9rem; font-weight: 600; color: #0F172A; margin-bottom: 1rem;">
+              📅 Lundi au Mercredi (Salle climatisée)
+            </p>
+
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 0.75rem;">
+              <div style="font-weight: 700; font-size: 0.88rem;">Session Matinée</div>
+              <div style="font-size: 1.1rem; font-weight: 800; color: var(--color-primary); font-family: monospace;">08h00 — 11h00</div>
+            </div>
+
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; font-size: 0.88rem;">Session Soirée (Idéal travailleurs)</div>
+              <div style="font-size: 1.1rem; font-weight: 800; color: #4338CA; font-family: monospace;">18h00 — 20h00</div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;">
+              Examens blancs réguliers, vidéos explicatives et révisions interactives en conditions réelles ANaTT.
+            </p>
+          </div>
+
+          <!-- Card 2 : Pratique -->
+          <div style="background: var(--color-white); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚗</div>
+            <span style="font-size: 0.78rem; font-weight: 800; color: #059669; text-transform: uppercase;">Au Volant</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.25rem 0 0.5rem 0;">Conduite Pratique</h3>
+            <p style="font-size: 0.9rem; font-weight: 600; color: #0F172A; margin-bottom: 1rem;">
+              📅 Jeudi, Vendredi et Samedi
+            </p>
+
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;">
+              <div style="font-weight: 700; font-size: 0.88rem;">Créneaux sur mesure</div>
+              <div style="font-size: 1.1rem; font-weight: 800; color: #059669; font-family: monospace;">07h00 à 18h00</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.35rem;">Planifiés selon votre convenance avec votre moniteur attitré.</div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+              Véhicules récents avec double commande sécurisée. Apprentissage sans précipitation, manœuvres, créneaux et insertion sur grands axes.
+            </p>
+          </div>
+
+          <!-- Card 3 : Secrétariat -->
+          <div style="background: var(--color-white); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🏢</div>
+            <span style="font-size: 0.78rem; font-weight: 800; color: #4338CA; text-transform: uppercase;">Accueil & Informations</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.25rem 0 0.5rem 0;">Secrétariat Général</h3>
+            <p style="font-size: 0.9rem; font-weight: 600; color: #0F172A; margin-bottom: 1rem;">
+              📅 Du Lundi au Samedi
+            </p>
+
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 0.75rem;">
+              <div style="font-weight: 700; font-size: 0.88rem;">Ouverture Non-Stop</div>
+              <div style="font-size: 1.1rem; font-weight: 800; color: #0F172A; font-family: monospace;">08h00 — 19h00</div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: var(--color-surface); border-radius: var(--radius-md); font-size: 0.85rem;">
+              <span>Dimanche</span>
+              <span style="color: #DC2626; font-weight: 700;">Fermé</span>
+            </div>
+
+            <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--color-primary); font-weight: 700;">
+              📞 (+229) 97 23 98 30 / 94 07 91 45
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5 : CHECKLIST DES PIÈCES DU DOSSIER ANaTT
+         ========================================================================== -->
+    <section id="dossier" class="section">
+      <div class="container" style="max-width: 820px;">
+        <div class="section-header">
+          <span class="section-tag">Examen Officiel ANaTT</span>
+          <h2 class="section-title">Pièces à fournir pour le dossier</h2>
+          <p class="section-desc">
+            Cochez les pièces dont vous disposez déjà. Vous pouvez finaliser votre inscription dès maintenant et compléter les pièces médicales ultérieurement.
+          </p>
+        </div>
+
+        <!-- Barre de progression -->
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.95rem;">
+            <span>Progression de votre dossier :</span>
+            <span id="checklist-count" style="color: var(--color-primary);">2 sur 5 pièces prêtes (40%)</span>
+          </div>
+          <div class="checklist-progress-bar">
+            <div id="checklist-fill" class="checklist-progress-fill" style="width: 40%;"></div>
+          </div>
+        </div>
+
+        <!-- Liste des pièces -->
+        <div class="checklist-item checked">
+          <div class="checklist-checkbox">✓</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">01 Photo d'identité récente</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">Format standard officiel sur fond blanc ou neutre uni.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item checked">
+          <div class="checklist-checkbox">✓</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Certificat d'Identification Personnelle (CIP) ou Carte Biométrique ANIP</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">Délivré par l'ANIP ou pièce d'identité biométrique valide.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Visite médicale d'aptitude à la conduite</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">Certificat médical délivré par un médecin agréé. (Notre secrétariat vous oriente dès l'inscription).</div>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Attestation officielle de groupe sanguin</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">Carte ou bulletin d'analyse sanguine de laboratoire certifié.</div>
+          </div>
+        </div>
+
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Copie d'extrait d'acte de mariage</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-muted);">Requis uniquement pour les femmes mariées (concordance d'état civil).</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.75rem;">
+          <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-lg">
+            S'inscrire avec mes pièces disponibles →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6 : TEST DU CODE DE LA ROUTE (QUIZ ANaTT)
+         ========================================================================== -->
+    <section id="quiz" class="section section-bg-surface" style="background: #0B1120;">
+      <div class="container">
+        <div class="section-header" style="color: #FFFFFF;">
+          <span class="section-tag" style="background: rgba(245,158,11,0.2); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3);">
+            Test Gratuit en Ligne
+          </span>
+          <h2 class="section-title" style="color: #FFFFFF;">Testez vos réflexes au Code de la Route</h2>
+          <p class="section-desc" style="color: #94A3B8;">
+            5 questions interactives inspirées des examens officiels de l'ANaTT Bénin.
+          </p>
+        </div>
+
+        <div class="quiz-card-wrapper">
+          <div id="quiz-box">
+            <!-- Rendu dynamique par initQuiz() dans app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7 : AVIS CANDIDATS
+         ========================================================================== -->
+    <section id="avis" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Retours d'Expérience</span>
+          <h2 class="section-title">Ce que nos apprenants disent de nous</h2>
+          <p class="section-desc">
+            Des témoignages authentiques de candidats ayant obtenu leur permis chez EDEN CONDUITE.
+          </p>
+        </div>
+
+        <div id="reviews-carousel" class="reviews-carousel">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              « Les cours du soir de 18h à 20h m'ont permis d'apprendre après le travail. Les moniteurs sont d'une patience remarquable. Merci à toute l'équipe d'EDEN CONDUITE ! »
+            </p>
+            <div class="review-author">Benoît AGUESSY</div>
+            <div class="review-role">Permis B — Akassato</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              « Auto-école très sérieuse et honnête sur les tarifs. Aucun frais caché, le dossier d'examen a été suivi avec rigueur jusqu'au bout. Je recommande vivement à Calavi ! »
+            </p>
+            <div class="review-author">Chantal HOUNDÉGNON</div>
+            <div class="review-role">Permis B Accéléré — Zopah</div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">
+              « Formation très solide sur le camion poids lourd. Les créneaux de conduite sont bien respectés et le moniteur est très pédagogue. »
+            </p>
+            <div class="review-author">Rodrigue TOSSOU</div>
+            <div class="review-role">Permis C Poids Lourds — Cotonou</div>
+          </div>
+        </div>
+
+        <div id="reviews-dots" class="reviews-dots"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8 : FOIRE AUX QUESTIONS (FAQ ACCORDÉON)
+         ========================================================================== -->
+    <section class="section section-bg-surface">
+      <div class="container" style="max-width: 820px;">
+        <div class="section-header">
+          <span class="section-tag">Questions Fréquentes</span>
+          <h2 class="section-title">Tout savoir avant de s'inscrire</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div class="faq-item" style="background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;">
+            <button type="button" class="faq-question" style="width: 100%; text-align: left; padding: 1.15rem 1.35rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <span>Combien coûte la formation au permis B ?</span>
+              <span>▼</span>
+            </button>
+            <div class="faq-answer" style="padding: 0 1.35rem 1.15rem 1.35rem; font-size: 0.9rem; color: var(--color-text-muted); display: block; border-top: 1px solid var(--color-border-light); padding-top: 0.85rem;">
+              Les droits d'inscription sont de 5 000 FCFA. La formation complète avec dossier d'examen officiel inclus est de 150 000 FCFA (soit un total de 155 000 FCFA), ou 200 000 FCFA pour la formule accélérée. Pour les candidats de nationalité étrangère, une quittance légale de 20 000 FCFA est exigée par l'ANaTT.
+            </div>
+          </div>
+
+          <div class="faq-item" style="background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;">
+            <button type="button" class="faq-question" style="width: 100%; text-align: left; padding: 1.15rem 1.35rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <span>Quels sont les jours et horaires des cours théoriques (code) ?</span>
+              <span>▼</span>
+            </button>
+            <div class="faq-answer" style="padding: 0 1.35rem 1.15rem 1.35rem; font-size: 0.9rem; color: var(--color-text-muted); display: none; border-top: 1px solid var(--color-border-light); padding-top: 0.85rem;">
+              Les séances de coaching théorique ont lieu du Lundi au Mercredi sur deux créneaux au choix : en matinée de 08h00 à 11h00, ou en soirée de 18h00 à 20h00, en salle climatisée.
+            </div>
+          </div>
+
+          <div class="faq-item" style="background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;">
+            <button type="button" class="faq-question" style="width: 100%; text-align: left; padding: 1.15rem 1.35rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <span>Quand ont lieu les cours de conduite pratique ?</span>
+              <span>▼</span>
+            </button>
+            <div class="faq-answer" style="padding: 0 1.35rem 1.15rem 1.35rem; font-size: 0.9rem; color: var(--color-text-muted); display: none; border-top: 1px solid var(--color-border-light); padding-top: 0.85rem;">
+              La pratique s'effectue les Jeudis, Vendredis et Samedis entre 07h00 et 18h00 sur rendez-vous personnalisé fixé d'accord-partie avec votre moniteur attitré.
+            </div>
+          </div>
+
+          <div class="faq-item" style="background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;">
+            <button type="button" class="faq-question" style="width: 100%; text-align: left; padding: 1.15rem 1.35rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <span>Puis-je payer par tranches ?</span>
+              <span>▼</span>
+            </button>
+            <div class="faq-answer" style="padding: 0 1.35rem 1.15rem 1.35rem; font-size: 0.9rem; color: var(--color-text-muted); display: none; border-top: 1px solid var(--color-border-light); padding-top: 0.85rem;">
+              Oui ! Des facilités de paiement par tranches sont prévues dès le règlement des droits d'inscription (5 000 FCFA) et d'un acompte de démarrage.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 9 : CONTACT, ACCÈS & ITINÉRAIRE GOOGLE MAPS
+         ========================================================================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Nous Rencontrer</span>
+          <h2 class="section-title">Coordonnées & Accès</h2>
+          <p class="section-desc">
+            Venez nous rendre visite à notre agence à Zopah Akassato ou contactez-nous par WhatsApp.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+          <!-- Infos -->
+          <div style="background: var(--color-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.25rem;">Auto-école EDEN CONDUITE</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 1.15rem; font-size: 0.95rem;">
+              <div>
+                <strong>📍 Adresse physique :</strong><br>
+                Sise à Zopah en face du Centre des Handicapés d'Akassato, Abomey-Calavi, Bénin.
+                <br>
+                <a href="https://maps.google.com/?q=6.492536,2.359913&entry=gps&g_st=aw" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 700; text-decoration: underline; font-size: 0.85rem; display: inline-block; margin-top: 0.25rem;">
+                  Ouvrir sur Google Maps (GPS : 6.492536, 2.359913) →
+                </a>
+              </div>
+
+              <div>
+                <strong>📞 Téléphones d'appel direct :</strong><br>
+                <a href="tel:+22997239830" style="font-weight: 700; color: #0F172A; text-decoration: underline;">(+229) 97 23 98 30</a> / 
+                <a href="tel:+22994079145" style="font-weight: 700; color: #0F172A; text-decoration: underline;">(+229) 94 07 91 45</a>
+              </div>
+
+              <div>
+                <strong>💬 WhatsApp Secrétariat :</strong><br>
+                <a href="https://wa.me/22997239830" target="_blank" rel="noopener noreferrer" style="color: #059669; font-weight: 700; text-decoration: underline;">
+                  +229 97 23 98 30 (Discussion instantanée)
+                </a>
+              </div>
+
+              <div>
+                <strong>🕒 Horaires d'accueil :</strong><br>
+                Du Lundi au Samedi : 08h00 — 19h00 (non-stop)<br>
+                Dimanche : Fermé
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte Visuelle & Actions -->
+          <div style="background: #0F172A; color: #FFFFFF; border-radius: var(--radius-xl); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px;">
+            <div>
+              <span style="font-size: 0.78rem; font-weight: 800; color: #F59E0B; text-transform: uppercase;">Repère Géographique</span>
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin: 0.5rem 0 1rem 0;">Localisation Akassato / Calavi</h3>
+              <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.6;">
+                Notre agence est facile d'accès, située à Zopah directement en face du Centre des Handicapés d'Akassato sur l'axe principal.
+              </p>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <a href="https://maps.google.com/?q=6.492536,2.359913&entry=gps&g_st=aw" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-lg" style="background: #EA580C;">
+                📍 Obtenir l'itinéraire GPS Google Maps
+              </a>
+              <a href="https://wa.me/22997239830?text=Bonjour%20EDEN%20CONDUITE%2C%20je%20souhaite%20visiter%20votre%20agence%20%C3%A0%20Akassato." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block">
+                💬 Écrire sur WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       10. PIED DE PAGE OFFICIEL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title">EDEN <span>CONDUITE</span></div>
+        <p class="footer-lead">
+          Auto-école agréée par le Ministère des Infrastructures et des Transports (ANaTT).
+        </p>
+        <div class="footer-agrement-box">
+          Agrément N° 2551/MIT/DC/SGM/ANaTT/DERC/SERC/SA
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Formations</h4>
+        <ul class="footer-links">
+          <li><a href="#tarifs">Permis B Voiture (150 000 FCFA)</a></li>
+          <li><a href="#tarifs">Permis B Accéléré (200 000 FCFA)</a></li>
+          <li><a href="#tarifs">Permis Motos A1, A2, A3 (95 000 FCFA)</a></li>
+          <li><a href="#tarifs">Permis Poids Lourds C (120 000 FCFA)</a></li>
+          <li><a href="#tarifs">Séances de Perfectionnement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Informations</h4>
+        <ul class="footer-links">
+          <li><a href="#devis">Simulateur de Devis (FCFA)</a></li>
+          <li><a href="#horaires">Horaires des Cours</a></li>
+          <li><a href="#dossier">Pièces du Dossier d'Examen</a></li>
+          <li><a href="#quiz">Test d'Entraînement au Code</a></li>
+          <li><a href="admin.html">Accès Direction & Administration</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-links">
+          <li>📍 Zopah en face Centre des Handicapés, Akassato</li>
+          <li>📞 (+229) 97 23 98 30 / 94 07 91 45</li>
+          <li>💬 WhatsApp : +229 97 23 98 30</li>
+          <li>🕒 Lun - Sam : 08h00 - 19h00 non-stop</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        © 2026 <strong>Auto-école EDEN CONDUITE</strong>. Tous droits réservés. République du Bénin.
+      </div>
+      <div>
+        <a href="admin.html" style="color: #64748B; text-decoration: underline;">🔒 Espace Direction</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       11. ACTIONS FLOTTANTES (WHATSAPP & MONITEUR IA)
+       ========================================================================== -->
+  <div class="floating-action-bar">
+    <button type="button" onclick="openAssistantModal()" class="btn btn-secondary btn-sm" style="border-radius: 999px; background: #0F172A; color: #F59E0B; border: 1.5px solid #F59E0B; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-weight: 700;" title="Moniteur Virtuel IA">
+      ✨ Moniteur IA (Code Bénin)
+    </button>
+    
+    <a href="https://wa.me/22997239830?text=Bonjour%20EDEN%20CONDUITE%2C%20je%20souhaite%20me%20renseigner%20pour%20une%20inscription." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="border-radius: 999px; padding: 0.85rem 1.4rem;" title="Discuter sur WhatsApp">
+      💬 WhatsApp Secrétariat
+    </a>
+  </div>
+
+  <!-- ==========================================================================
+       12. MODALE D'INSCRIPTION RAPIDE (3 ÉTAPES & WHATSAPP)
+       ========================================================================== -->
+  <div id="inscription-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-title" class="modal-title">Inscription en Ligne</h2>
+          <p class="modal-sub">Auto-école EDEN CONDUITE · Agrément N° 2551</p>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Fermer la fenêtre">✕</button>
+      </div>
+
+      <div class="modal-stepper-dots">
+        <div class="stepper-dot active"></div>
+        <div class="stepper-dot"></div>
+        <div class="stepper-dot"></div>
+      </div>
+
+      <div class="modal-body">
+        <form id="quick-inscription-form">
+          <!-- Étape 1 : Formule & Horaires -->
+          <div class="modal-step-block active" data-step="1">
+            <div class="form-group">
+              <label for="modal-input-formule" class="form-label">Formation choisie</label>
+              <select id="modal-input-formule" class="form-select">
+                <optgroup label="Permis Véhicules">
+                  <option value="permis-b-complet" data-prix="150000" data-nom="Permis B — Formation Complète">Permis B — Formation Complète (150 000 FCFA)</option>
+                  <option value="permis-b-accelere" data-prix="200000" data-nom="Permis B — Accéléré">Permis B — Accéléré (200 000 FCFA)</option>
+                  <option value="permis-motos" data-prix="95000" data-nom="Permis Motos A1, A2, A3">Permis Motos A1, A2, A3 (95 000 FCFA)</option>
+                  <option value="permis-c" data-prix="120000" data-nom="Permis Poids Lourds C / Dr">Permis Poids Lourds C / Dr (120 000 FCFA)</option>
+                  <option value="permis-c1" data-prix="150000" data-nom="Permis Poids Lourds C1">Permis Poids Lourds C1 (150 000 FCFA)</option>
+                  <option value="permis-d" data-prix="180000" data-nom="Permis Transport Voyageurs D">Permis Transport Voyageurs D (180 000 FCFA)</option>
+                </optgroup>
+                <optgroup label="Perfectionnement">
+                  <option value="rec-4h" data-prix="35000" data-nom="Perfectionnement 4H">Perfectionnement 4 Heures (35 000 FCFA)</option>
+                  <option value="rec-6h" data-prix="45000" data-nom="Perfectionnement 6H">Perfectionnement 6 Heures (45 000 FCFA)</option>
+                  <option value="rec-10h" data-prix="70000" data-nom="Perfectionnement 10H">Perfectionnement 10 Heures (70 000 FCFA)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-coaching" class="form-label">Créneau théorique souhaité</label>
+              <select id="modal-input-coaching" class="form-select">
+                <option value="Session Soirée (18h-20h)" selected>Session Soirée (18h00 - 20h00) — Idéal travailleurs</option>
+                <option value="Session Matinée (08h-11h)">Session Matinée (08h00 - 11h00)</option>
+              </select>
+            </div>
+
+            <div style="padding: 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 0.88rem;">
+              <span style="color: var(--color-text-muted);">Montant estimatif :</span>
+              <strong id="modal-price-preview" style="color: var(--color-primary); display: block; font-size: 1.15rem; margin-top: 0.25rem;">
+                155 000 FCFA (dont 5 000 FCFA d'inscription)
+              </strong>
+            </div>
+          </div>
+
+          <!-- Étape 2 : Coordonnées du candidat -->
+          <div class="modal-step-block" data-step="2" style="display: none;">
+            <div class="form-group">
+              <label for="modal-input-nom" class="form-label">Nom de famille *</label>
+              <input type="text" id="modal-input-nom" class="form-input" placeholder="Ex: SOSSOU" required>
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-prenom" class="form-label">Prénom(s) *</label>
+              <input type="text" id="modal-input-prenom" class="form-input" placeholder="Ex: Junior" required>
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-tel" class="form-label">Numéro de téléphone d'appel * (Bénin)</label>
+              <input type="tel" id="modal-input-tel" class="form-input" placeholder="Ex: 97 45 12 30" required>
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-whatsapp" class="form-label">Numéro WhatsApp (si différent)</label>
+              <input type="tel" id="modal-input-whatsapp" class="form-input" placeholder="Ex: 97 45 12 30">
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-quartier" class="form-label">Quartier de résidence</label>
+              <input type="text" id="modal-input-quartier" class="form-input" placeholder="Ex: Akassato, Zopah, Calavi centre...">
+            </div>
+          </div>
+
+          <!-- Étape 3 : Récapitulatif & Validation -->
+          <div class="modal-step-block" data-step="3" style="display: none;">
+            <div id="modal-recap-content" class="receipt-box">
+              <!-- Rendu dynamique par renderModalSummary() -->
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5;">
+              En validant, un numéro de dossier officiel sera immédiatement généré. Vous pourrez ensuite transmettre directement votre récapitulatif au secrétariat sur WhatsApp.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="wiz-btn-prev" class="btn btn-secondary btn-sm" style="display: none;">
+          ← Retour
+        </button>
+        <button type="button" id="wiz-btn-next" class="btn btn-primary btn-sm" style="margin-left: auto;">
+          Suivant →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       13. MODALE DU MONITEUR VIRTUEL IA (ASSISTANT CODE BÉNIN)
+       ========================================================================== -->
+  <div id="assistant-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="assistant-modal-box">
+      <div class="assistant-chat-header">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+            🤖
+          </div>
+          <div>
+            <div style="font-weight: 800; font-size: 1rem;">Moniteur Virtuel EDEN</div>
+            <div style="font-size: 0.75rem; color: #34D399; font-weight: 600;">● En ligne · Code de la Route Bénin</div>
+          </div>
+        </div>
+
+        <button type="button" onclick="closeAssistantModal()" style="color: #94A3B8; font-size: 1.3rem; cursor: pointer;">✕</button>
+      </div>
+
+      <div id="assistant-chat-body" class="assistant-chat-body">
+        <div class="chat-bubble bot">
+          Bonjour ! 🚗 Je suis le <strong>Moniteur Virtuel d'EDEN CONDUITE</strong>.
+          <br><br>
+          Posez-moi vos questions sur les <strong>règles du Code de la Route au Bénin</strong>, nos tarifs, les horaires de cours ou les pièces du dossier ANaTT.
+        </div>
+      </div>
+
+      <!-- Questions suggérées -->
+      <div style="padding: 0.5rem 1rem; background: #FFFFFF; border-top: 1px solid #F1F5F9; display: flex; gap: 0.5rem; overflow-x: auto; white-space: nowrap;">
+        <button type="button" onclick="askQuickQuestion('Quels sont les tarifs du permis B ?')" style="font-size: 0.75rem; padding: 0.3rem 0.65rem; background: #F1F5F9; border-radius: 999px; cursor: pointer;">💰 Tarifs permis B</button>
+        <button type="button" onclick="askQuickQuestion('Quelles sont les limitations de vitesse au Bénin ?')" style="font-size: 0.75rem; padding: 0.3rem 0.65rem; background: #F1F5F9; border-radius: 999px; cursor: pointer;">🚦 Limitations vitesse</button>
+        <button type="button" onclick="askQuickQuestion('Quelles sont les pièces du dossier ANaTT ?')" style="font-size: 0.75rem; padding: 0.3rem 0.65rem; background: #F1F5F9; border-radius: 999px; cursor: pointer;">📋 Pièces requises</button>
+        <button type="button" onclick="askQuickQuestion('Quels sont les horaires des cours du soir ?')" style="font-size: 0.75rem; padding: 0.3rem 0.65rem; background: #F1F5F9; border-radius: 999px; cursor: pointer;">🕒 Cours du soir</button>
+      </div>
+
+      <div class="assistant-chat-input-area">
+        <form id="assistant-chat-form" style="display: flex; gap: 0.5rem; width: 100%;">
+          <input type="text" id="assistant-chat-input" class="form-input" style="min-height: 44px; padding: 0.5rem 1rem; font-size: 0.9rem;" placeholder="Écrivez votre question ici..." required>
+          <button type="submit" class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem;">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteneur des notifications Toast -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts JavaScript Officiels (Zéro Dépendance Serveur) -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
 </html>
