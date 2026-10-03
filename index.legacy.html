@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Auto-école EDEN CONDUITE — Abomey-Calavi | Permis B, Motos, Poids Lourds</title>
+  
+  <meta name="description" content="Site officiel de l'auto-école EDEN CONDUITE à Zopah (Abomey-Calavi). Permis B, accéléré, motos et poids lourds. Agrément ANaTT N° 2551. Inscription simple à 5 000 FCFA.">
+  <meta name="keywords" content="auto-école bénin, permis de conduire calavi, eden conduite, permis b abomey calavi, code de la route benin, anatt benin, conduite akassato">
+  
+  <!-- Sécurité & Bonnes Pratiques -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Auto-école EDEN CONDUITE — Votre savoir-faire est notre raison d'être">
+  <meta property="og:description" content="Formation certifiée au permis de conduire à Abomey-Calavi (Zopah - Akassato). Inscription simple à 5 000 FCFA.">
+  <meta property="og:image" content="assets/images/logo-eden-conduite.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/jpeg" href="assets/images/logo-eden-conduite.jpg">
+  
+  <!-- Feuilles de styles : Design System bicolore Orange & Blanc -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRE DE NAVIGATION (MOBILE-FIRST & DESKTOP)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#presentation" class="nav-brand" aria-label="Accueil EDEN CONDUITE">
+        <img src="assets/images/logo-eden-conduite.jpg" alt="Logo EDEN CONDUITE" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">EDEN <span>CONDUITE</span></span>
+          <span class="nav-brand-sub">Agrément ANaTT N° 2551</span>
+        </div>
+      </a>
+
+      <!-- Liens Desktop -->
+      <nav class="nav-menu" aria-label="Navigation principale">
+        <a href="#presentation" class="nav-link active">Présentation</a>
+        <a href="#inscription" class="nav-link">Inscription</a>
+        <a href="#formations" class="nav-link">Formations</a>
+        <a href="#galerie" class="nav-link">Galerie</a>
+        <a href="#avis" class="nav-link">Avis</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Actions de droite -->
+      <div class="nav-actions">
+        <div class="header-status-badge" title="Horaires du secrétariat">
+          <span id="nav-status-dot" class="status-dot"></span>
+          <span id="nav-status-text">Accueil Ouvert</span>
+        </div>
+
+        <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-sm" style="display: none;">
+          S'inscrire
+        </button>
+
+        <!-- Déclencheur Mobile Burger -->
+        <button id="burger-toggle" class="burger-toggle" aria-label="Ouvrir le menu">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tiroir de Navigation Mobile -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-nav-links">
+      <a href="#presentation" class="mobile-nav-link">
+        <span>🚗 Présentation</span>
+        <span>→</span>
+      </a>
+      <a href="#inscription" class="mobile-nav-link">
+        <span>📝 Inscription (5 000 FCFA)</span>
+        <span>→</span>
+      </a>
+      <a href="#formations" class="mobile-nav-link">
+        <span>📋 Formations & Permis</span>
+        <span>→</span>
+      </a>
+      <a href="#galerie" class="mobile-nav-link">
+        <span>📸 Galerie Photos</span>
+        <span>→</span>
+      </a>
+      <a href="#avis" class="mobile-nav-link">
+        <span>⭐ Avis Candidats</span>
+        <span>→</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link">
+        <span>📍 Contact & Accès</span>
+        <span>→</span>
+      </a>
+    </nav>
+
+    <div class="mobile-drawer-footer">
+      <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-block btn-lg">
+        Lancer mon inscription
+      </button>
+      <a href="tel:+22997239830" class="btn btn-secondary btn-block">
+        📞 Appeler le secrétariat
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1 : PRÉSENTATION
+         ========================================================================== -->
+    <section id="presentation" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-agrement">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <span>Agrément Officiel ANaTT N° 2551/MIT</span>
+          </div>
+
+          <h1 class="hero-title">
+            Apprenez à conduire en toute <span>confiance</span> à Calavi.
+          </h1>
+
+          <p class="hero-lead">
+            <strong>EDEN CONDUITE</strong> vous accompagne vers la réussite de votre permis (Voitures, Motos, Poids Lourds) avec des moniteurs diplômés et des horaires adaptés à votre emploi du temps.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#formations" class="btn btn-primary btn-lg">
+              Découvrir les formations
+            </a>
+            <a href="tel:+22997239830" class="btn btn-outline btn-lg">
+              Nous contacter
+            </a>
+          </div>
+
+          <div class="hero-proof-bar">
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">96%</span>
+              <span class="hero-proof-label">Taux de réussite</span>
+            </div>
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">1 500+</span>
+              <span class="hero-proof-label">Candidats formés</span>
+            </div>
+            <div class="hero-proof-item">
+              <span class="hero-proof-num">100%</span>
+              <span class="hero-proof-label">Moniteurs certifiés</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visuel sobre lié à la conduite -->
+        <div class="hero-card-visual">
+          <div class="hero-visual-header">
+            <div class="hero-visual-icon">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+            </div>
+            <div>
+              <div class="hero-visual-title">Auto-école EDEN CONDUITE</div>
+              <div class="hero-visual-sub">« Votre savoir-faire est notre raison d'être »</div>
+            </div>
+          </div>
+
+          <div class="hero-visual-features">
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Coaching théorique :</strong> Lundi au Mercredi (Matinée 08h-11h ou Soir 18h-20h)</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Conduite pratique :</strong> Jeudi, Vendredi et Samedi sur véhicules double commande</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Localisation :</strong> Sise à Zopah en face du Centre des Handicapés d'Akassato</span>
+            </div>
+            <div class="hero-feature-row">
+              <span class="hero-feature-dot">✓</span>
+              <span><strong>Examen ANaTT :</strong> Préparation en conditions réelles avec examens blancs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2 : INSCRIPTION (Mise en avant 5 000 FCFA)
+         ========================================================================== -->
+    <section id="inscription" class="section section-bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Démarche Simplifiée</span>
+          <h2 class="section-title">Commencez votre inscription</h2>
+          <p class="section-desc">
+            Une procédure simple, transparente et sans frais dissimulés pour démarrer vos cours dès cette semaine.
+          </p>
+        </div>
+
+        <div class="inscription-highlight-card">
+          <div class="inscription-highlight-grid">
+            <div>
+              <div class="inscription-fee-box">
+                <div class="inscription-fee-amount">5 000 <span style="font-size: 1.1rem;">FCFA</span></div>
+                <div class="inscription-fee-label">
+                  <span class="fee-title">Frais d'inscription simple</span>
+                  <span class="fee-sub">Valable 3 mois • Constitution et suivi de votre dossier inclus</span>
+                </div>
+              </div>
+
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+                Chez <strong>EDEN CONDUITE</strong>, l'inscription est claire dès le premier jour. Elle enregistre officiellement votre candidature et débloque immédiatement votre accès aux cours de code de la route.
+              </p>
+
+              <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-lg btn-block" style="max-width: 380px;">
+                Démarrer mon inscription en ligne →
+              </button>
+            </div>
+
+            <div class="inscription-steps-list">
+              <div class="inscription-step-item">
+                <div class="step-num-badge">1</div>
+                <div>
+                  <div class="step-content-title">Choisissez votre formule</div>
+                  <div class="step-content-desc">Sélectionnez la catégorie de permis adaptée à votre projet (Voiture B, Moto A, Poids Lourd).</div>
+                </div>
+              </div>
+
+              <div class="inscription-step-item">
+                <div class="step-num-badge">2</div>
+                <div>
+                  <div class="step-content-title">Renseignez vos coordonnées</div>
+                  <div class="step-content-desc">Indiquez votre nom et téléphone pour recevoir immédiatement votre numéro de dossier officiel.</div>
+                </div>
+              </div>
+
+              <div class="inscription-step-item">
+                <div class="step-num-badge">3</div>
+                <div>
+                  <div class="step-content-title">Démarrez vos cours</div>
+                  <div class="step-content-desc">Passez au secrétariat à Zopah pour déposer vos pièces et intégrer votre session de coaching.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3 : FORMATIONS (Organisées par Permis, Cartes claires)
+         ========================================================================== -->
+    <section id="formations" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Offres & Tarifs Officiels</span>
+          <h2 class="section-title">Nos Formations au Permis</h2>
+          <p class="section-desc">
+            Comparez facilement nos formules adaptées à chaque catégorie de véhicule. Tarifs officiels en FCFA.
+          </p>
+        </div>
+
+        <!-- Filtre rapide par catégorie (tactile sur mobile) -->
+        <div class="category-filter-nav" role="tablist">
+          <button type="button" class="filter-tab-btn active" data-filter="all">Toutes les offres</button>
+          <button type="button" class="filter-tab-btn" data-filter="auto">Permis B (Voiture)</button>
+          <button type="button" class="filter-tab-btn" data-filter="moto">Motos (A1, A2, A3)</button>
+          <button type="button" class="filter-tab-btn" data-filter="lourd">Poids Lourds (C, C1, D)</button>
+          <button type="button" class="filter-tab-btn" data-filter="recyclage">Perfectionnement</button>
+        </div>
+
+        <!-- Grille des cartes de formations -->
+        <div class="formations-grid">
+
+          <!-- Carte 1 : Permis B Complet -->
+          <article class="formation-card featured" data-category="auto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie B ou F</span>
+                <span class="badge badge-orange">Le Plus Choisi</span>
+              </div>
+              <h3 class="formation-card-title">Permis B — Formation Complète</h3>
+              <p class="formation-card-desc">
+                La formation de référence pour maîtriser la conduite automobile et réussir l'examen officiel ANaTT avec sérénité.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">150 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Frais de constitution et suivi de dossier inclus</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Coaching théorique complet (Matin ou Soir)</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Pratique sur véhicules double commande</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Examens blancs réguliers conformes ANaTT</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Validité de la formation : 3 mois</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- Carte 2 : Permis B Accéléré -->
+          <article class="formation-card" data-category="auto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie B ou F</span>
+                <span class="badge badge-navy">Formule Intensive</span>
+              </div>
+              <h3 class="formation-card-title">Permis B — Accéléré</h3>
+              <p class="formation-card-desc">
+                Rythme intensif condensé pour professionnels ou candidats pressés souhaitant passer l'examen rapidement.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">200 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Planning de conduite rapproché prioritaire</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Coaching théorique condensé haute fréquence</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Simulations d'examen blanc renforcées</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Accompagnement gestion du stress au volant</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-b-accelere')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- Carte 3 : Permis Motos -->
+          <article class="formation-card" data-category="moto">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie A1 — A2 — A3</span>
+                <span class="badge badge-orange">2 Roues</span>
+              </div>
+              <h3 class="formation-card-title">Permis Motos & Deux-Roues</h3>
+              <p class="formation-card-desc">
+                Apprentissage complet de la conduite moto sécuritaire, maîtrise de l'équilibre et circulation urbaine.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">95 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Constitution et suivi du dossier d'examen</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Cours de code spécifiques aux deux-roues</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Maniement plateau et trajectoires de sécurité</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Présentation officielle à l'examen</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-motos')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- Carte 4 : Permis C Poids Lourds -->
+          <article class="formation-card" data-category="lourd">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie Dr ou C</span>
+                <span class="badge badge-navy">Professionnel</span>
+              </div>
+              <h3 class="formation-card-title">Permis Poids Lourds C / Dr</h3>
+              <p class="formation-card-desc">
+                Formation professionnelle destinée au transport de marchandises, camions rigides et carrières routières.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">120 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Réglementation transport routier de marchandises</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Prise en main des gabarits et manœuvres</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Sécurité et arrimage du chargement</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Examen pratique sur véhicule agréé</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-c')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- Carte 5 : Permis C1 -->
+          <article class="formation-card" data-category="lourd">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Catégorie C1</span>
+                <span class="badge badge-navy">Transport</span>
+              </div>
+              <h3 class="formation-card-title">Permis Poids Lourds C1</h3>
+              <p class="formation-card-desc">
+                Conduite de véhicules utilitaires lourds et transport logistique intermédiaire.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">150 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">+ 5 000 F d'inscription</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Formation théorique avancée et pratique renforcée</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Manœuvres d'attelage et conduite économique</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Préparation directe aux épreuves ANaTT</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('permis-c1')" class="btn btn-outline btn-block">
+              Choisir cette formation
+            </button>
+          </article>
+
+          <!-- Carte 6 : Recyclage 6h -->
+          <article class="formation-card" data-category="recyclage">
+            <div class="formation-card-header">
+              <div class="card-top-meta">
+                <span class="card-permis-badge">Remise à niveau</span>
+                <span class="badge badge-orange">Reprise de confiance</span>
+              </div>
+              <h3 class="formation-card-title">Perfectionnement 6 Heures</h3>
+              <p class="formation-card-desc">
+                Idéal pour reprendre le volant sereinement en ville, maîtriser les démarrages en côte et le stationnement.
+              </p>
+            </div>
+
+            <div class="formation-card-price-box">
+              <div>
+                <span class="price-main">45 000</span><span class="price-unit">FCFA</span>
+              </div>
+              <span class="price-note">Tarif tout compris</span>
+            </div>
+
+            <div class="formation-inclusions-list">
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>6 heures de conduite accompagnée par un coach</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Révision des priorités et ronds-points complexes</span></div>
+              <div class="inclusion-item"><span class="inclusion-check">✓</span><span>Créneaux et rangements en bataille</span></div>
+            </div>
+
+            <button type="button" onclick="openInscriptionModal('rec-6h')" class="btn btn-outline btn-block">
+              Choisir cette formule
+            </button>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4 : GALERIE (Structure prête, contenu en attente)
+         ========================================================================== -->
+    <section id="galerie" class="section section-bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Sur le Terrain</span>
+          <h2 class="section-title">Galerie Photos</h2>
+          <p class="section-desc">
+            Découvrez nos véhicules d'apprentissage, nos salles de cours théoriques et les séances pratiques à Calavi.
+          </p>
+        </div>
+
+        <!-- État vide propre et structuré pour alimentation ultérieure -->
+        <div class="gallery-empty-state">
+          <div class="gallery-empty-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="gallery-empty-title">Galerie en cours d'actualisation</h3>
+          <p class="gallery-empty-desc">
+            Les clichés officiels de nos véhicules et des sessions pratiques de conduite seront publiés très prochainement.
+          </p>
+        </div>
+
+        <!-- Conteneur grille prêt pour le chargement futur des photos -->
+        <div id="gallery-container" class="gallery-grid" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5 : AVIS DES UTILISATEURS (Carousel Tactile Mobile-First)
+         ========================================================================== -->
+    <section id="avis" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Retours d'Expérience</span>
+          <h2 class="section-title">Ce que disent nos apprenants</h2>
+          <p class="section-desc">
+            Des avis sincères de candidats ayant obtenu leur permis chez EDEN CONDUITE.
+          </p>
+        </div>
+
+        <div class="reviews-wrapper">
+          <!-- Piste de défilement tactile avec support swipe -->
+          <div id="reviews-carousel" class="reviews-carousel">
+            
+            <!-- Témoignage 1 -->
+            <div class="review-card">
+              <div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                  « Les cours de coaching le soir de 18h à 20h m'ont permis d'apprendre après le travail. Les moniteurs sont d'une patience remarquable. Permis obtenu du premier coup ! »
+                </p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">BA</div>
+                <div>
+                  <div class="review-author-name">Benoît AGUESSY</div>
+                  <div class="review-author-permis">Permis B — Akassato</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Témoignage 2 -->
+            <div class="review-card">
+              <div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                  « Auto-école très sérieuse et honnête sur les tarifs. Pas de frais cachés, le dossier d'examen a été suivi avec rigueur du début jusqu'à l'examen ANaTT. »
+                </p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">CH</div>
+                <div>
+                  <div class="review-author-name">Chantal HOUNDÉGNON</div>
+                  <div class="review-author-permis">Permis B Accéléré — Zopah</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Témoignage 3 -->
+            <div class="review-card">
+              <div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                  « Formation très rigoureuse sur le camion. Les créneaux du jeudi au samedi sont très pratiques pour s'organiser quand on travaille. Moniteur très pédagogue. »
+                </p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">RT</div>
+                <div>
+                  <div class="review-author-name">Rodrigue TOSSOU</div>
+                  <div class="review-author-permis">Permis C Poids Lourds</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Points de pagination tactiles -->
+          <div id="reviews-dots" class="reviews-nav-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION CONTACT & ACCÈS
+         ========================================================================== -->
+    <section id="contact" class="section section-bg-surface">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Nous Rencontrer</span>
+          <h2 class="section-title">Coordonnées & Secrétariat</h2>
+          <p class="section-desc">
+            Notre équipe vous accueille à Zopah pour répondre à vos questions et finaliser votre inscription.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 840px; margin: 0 auto;">
+          <div style="background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-card);">
+            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  📍
+                </div>
+                <div>
+                  <strong style="display: block; font-size: 1rem; color: var(--color-text-main);">Adresse officielle</strong>
+                  <span style="font-size: 0.9rem; color: var(--color-text-muted);">Sise à Zopah en face du Centre des Handicapés d'Akassato, Abomey-Calavi, Bénin</span>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  📞
+                </div>
+                <div>
+                  <strong style="display: block; font-size: 1rem; color: var(--color-text-main);">Téléphones & WhatsApp</strong>
+                  <span style="font-size: 0.9rem; color: var(--color-text-muted);">
+                    <a href="tel:+22997239830" style="color: var(--color-primary); font-weight: 700;">(+229) 97 23 98 30</a> / 
+                    <a href="tel:+22994079145" style="color: var(--color-primary); font-weight: 700;">(+229) 94 07 91 45</a>
+                  </span>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  🕒
+                </div>
+                <div>
+                  <strong style="display: block; font-size: 1rem; color: var(--color-text-main);">Horaires des cours</strong>
+                  <span style="font-size: 0.9rem; color: var(--color-text-muted);">
+                    <strong>Code théorique :</strong> Lundi au Mercredi (08h-11h / 18h-20h)<br>
+                    <strong>Conduite pratique :</strong> Jeudi, Vendredi et Samedi
+                  </span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                <a href="https://maps.google.com/?q=6.492536,2.359913&entry=gps&g_st=aw" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex: 1; min-width: 180px;">
+                  🗺️ Localiser sur Google Maps
+                </a>
+                <a href="https://wa.me/22997239830?text=Bonjour%20Auto-%C3%A9cole%20EDEN%20CONDUITE,%20je%20souhaite%20des%20renseignements." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="flex: 1; min-width: 180px;">
+                  💬 Discuter sur WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       BARRE FIXE FLOTTANTE SUR SMARTPHONE (TOUCH TO CALL / WHATSAPP)
+       ========================================================================== -->
+  <aside class="mobile-sticky-action-bar" aria-label="Actions rapides">
+    <a href="tel:+22997239830" class="btn btn-secondary mobile-sticky-btn">
+      📞 Appeler
+    </a>
+    <button type="button" onclick="openInscriptionModal('permis-b-complet')" class="btn btn-primary mobile-sticky-btn">
+      S'inscrire (5 000 F)
+    </button>
+  </aside>
+
+  <!-- ==========================================================================
+       PIED DE PAGE (FOOTER)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-title">EDEN <span>CONDUITE</span></div>
+          <p class="footer-brand-desc">
+            Auto-école agréée par l'État Béninois (ANaTT N° 2551/MIT). Formations certifiées au permis de conduire toutes catégories à Abomey-Calavi.
+          </p>
+          <div style="font-size: 0.8rem; color: #94A3B8;">
+            <em>« Votre savoir-faire est notre raison d'être »</em>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Formations</div>
+          <ul class="footer-contact-list">
+            <li><a href="#formations" style="color: #CBD5E1;">Permis B — Formation Complète</a></li>
+            <li><a href="#formations" style="color: #CBD5E1;">Permis B — Formule Accélérée</a></li>
+            <li><a href="#formations" style="color: #CBD5E1;">Permis Motos A1, A2, A3</a></li>
+            <li><a href="#formations" style="color: #CBD5E1;">Permis Poids Lourds C & C1</a></li>
+            <li><a href="#formations" style="color: #CBD5E1;">Perfectionnement & Recyclage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Secrétariat</div>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span>Zopah, face Centre Handicapés Akassato, Calavi</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>(+229) 97 23 98 30 / 94 07 91 45</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <span>Accueil : Lun-Sam 08h-19h (non-stop)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Auto-école <strong>EDEN CONDUITE</strong>. Tous droits réservés.
+        </div>
+        <div>
+          <a href="admin.html" class="footer-admin-link" title="Espace réservé à l'auto-école">
+            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <span>Accès Secrétariat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALE D'INSCRIPTION RAPIDE (3 ÉTAPES TACTILES)
+       ========================================================================== -->
+  <div id="inscription-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Inscription en Ligne</h3>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Fermer la fenêtre">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Indicateur d'étapes -->
+        <div class="modal-stepper-dots">
+          <div class="stepper-dot active"></div>
+          <div class="stepper-dot"></div>
+          <div class="stepper-dot"></div>
+        </div>
+
+        <form id="quick-inscription-form" onsubmit="return false;">
+          <!-- Étape 1 : Formule & Tarif -->
+          <div class="modal-step-block" data-step="1">
+            <div class="form-group">
+              <label for="modal-input-formule" class="form-label">Sélectionnez votre formule</label>
+              <select id="modal-input-formule" class="form-select">
+                <option value="permis-b-complet" data-prix="150000" data-nom="Permis B — Formation Complète">Permis B — Formation Complète (150 000 FCFA)</option>
+                <option value="permis-b-accelere" data-prix="200000" data-nom="Permis B — Formation Accélérée">Permis B — Formation Accélérée (200 000 FCFA)</option>
+                <option value="permis-motos" data-prix="95000" data-nom="Permis Motos A1/A2/A3">Permis Motos & Deux-Roues (95 000 FCFA)</option>
+                <option value="permis-c" data-prix="120000" data-nom="Permis Poids Lourds C">Permis Poids Lourds C / Dr (120 000 FCFA)</option>
+                <option value="permis-c1" data-prix="150000" data-nom="Permis Poids Lourds C1">Permis Poids Lourds C1 (150 000 FCFA)</option>
+                <option value="rec-6h" data-prix="45000" data-nom="Perfectionnement 6h">Perfectionnement Conduite 6h (45 000 FCFA)</option>
+              </select>
+            </div>
+
+            <div style="background: var(--color-primary-light); border: 1.5px solid var(--color-primary-border); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">Estimation Globale</div>
+              <div id="modal-price-preview" style="font-size: 1.25rem; font-weight: 800; color: var(--color-text-main); margin-top: 0.2rem;">
+                155 000 FCFA (dont 5 000 FCFA d'inscription)
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-coaching" class="form-label">Créneau théorique souhaité</label>
+              <select id="modal-input-coaching" class="form-select">
+                <option value="Session Soirée (18h-20h)">Session Soirée (18h00 — 20h00)</option>
+                <option value="Session Matinée (08h-11h)">Session Matinée (08h00 — 11h00)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Étape 2 : Vos Coordonnées -->
+          <div class="modal-step-block" data-step="2" style="display: none;">
+            <div class="form-group">
+              <label for="modal-input-nom" class="form-label">Nom de famille *</label>
+              <input type="text" id="modal-input-nom" class="form-input" placeholder="Ex: KODJO" required autocomplete="family-name">
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-prenom" class="form-label">Prénom(s) *</label>
+              <input type="text" id="modal-input-prenom" class="form-input" placeholder="Ex: Jean-Luc" required autocomplete="given-name">
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-tel" class="form-label">Numéro de téléphone principal *</label>
+              <input type="tel" id="modal-input-tel" class="form-input" placeholder="Ex: 97 00 00 00" required autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-whatsapp" class="form-label">Numéro WhatsApp (si différent)</label>
+              <input type="tel" id="modal-input-whatsapp" class="form-input" placeholder="Optionnel">
+            </div>
+
+            <div class="form-group">
+              <label for="modal-input-quartier" class="form-label">Quartier de résidence</label>
+              <input type="text" id="modal-input-quartier" class="form-input" placeholder="Ex: Akassato, Zopah, Calavi Centre...">
+            </div>
+          </div>
+
+          <!-- Étape 3 : Récapitulatif -->
+          <div class="modal-step-block" data-step="3" style="display: none;">
+            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+              Vérifiez vos informations avant de confirmer. Votre numéro de dossier officiel sera immédiatement généré.
+            </p>
+
+            <div id="modal-recap-content" class="receipt-box"></div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="wiz-btn-prev" class="btn btn-secondary" style="display: none;">
+          ← Retour
+        </button>
+        <button type="button" id="wiz-btn-next" class="btn btn-primary" style="margin-left: auto;">
+          Suivant →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteneur Toast Notifications -->
+  <div class="toast-container"></div>
+
+  <!-- Scripts officiels & Moteur sécurisé -->
+  <script src="js/data.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

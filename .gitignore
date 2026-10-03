@@ -21,7 +21,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Dependencies
+node_modules/
+
+# Production build artifacts
+dist/
+
 # Environment and sensitive data
 .env
 .env.local
 .env.*.local
+
